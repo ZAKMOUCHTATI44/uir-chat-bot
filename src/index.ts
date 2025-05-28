@@ -10,7 +10,7 @@ config();
 const app = express();
 app.use(bodyParser.json());
 
-app.post("/webhook", async (req: Request, res: Response) => {
+app.post("/uir-chat-bot", async (req: Request, res: Response) => {
   const { message } = req.body;
   if (!message) {
     res.status(400).send("No question provided");
