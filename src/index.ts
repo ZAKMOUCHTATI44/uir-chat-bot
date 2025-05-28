@@ -12,11 +12,10 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-
-
 app.post("/uir-chat-bot", async (req: Request, res: Response) => {
   const { message } = req.body;
+
+  console.log(req.body);
   if (!message) {
     res.status(400).send("No question provided");
   }
