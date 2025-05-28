@@ -23,7 +23,7 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
   res.json({ response });
 });
 
-const port = process.env.PORT || 4000;
+const port = 7001;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
