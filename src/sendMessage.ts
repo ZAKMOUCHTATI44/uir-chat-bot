@@ -7,7 +7,7 @@ export async function sendMessage(sendTo: string, message: string) {
     .create({
       body: message,
       from: "whatsapp:+212719507879",
-      to: "whatsapp:+212621586010",
+      to: sendTo,
     })
     .then((res) => {
       console.log("SENDING ...");
