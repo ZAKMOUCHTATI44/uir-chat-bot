@@ -1,7 +1,6 @@
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import { config } from "dotenv";
-import { findResponse } from "./services";
 import { findReponse } from "./app";
 import { sendMessage } from "./sendMessage";
 
@@ -24,7 +23,14 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
 
   const response = await findReponse(message.Body);
 
-  sendMessage(message.From, response);
+  if (response) {
+    sendMessage(message.From, response);
+  } else {
+    sendMessage(
+      message.Form,
+      `Bonjour ! Comment puis-je vous aider aujourd'hui ?`
+    );
+  }
 
   res.json({ response });
 });
