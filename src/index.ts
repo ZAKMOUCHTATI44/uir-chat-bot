@@ -10,6 +10,9 @@ config();
 const app = express();
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
 
 
 app.post("/uir-chat-bot", async (req: Request, res: Response) => {
