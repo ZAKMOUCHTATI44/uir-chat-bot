@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import { config } from "dotenv";
 import { findReponse } from "./app";
 import { sendMessage } from "./sendMessage";
+import { handleAudio } from "./audio";
 
 config();
 
@@ -14,25 +15,35 @@ app.use(express.json());
 app.post("/uir-chat-bot", async (req: Request, res: Response) => {
   const message = req.body;
 
-  console.log("************");
-  console.log(message);
-  console.log("************");
   if (!message) {
     res.status(400).send("No question provided");
   }
 
-  const response = await findReponse(message.Body);
+  if (message.MediaContentType0 === "audio/ogg") {
+    const question = await handleAudio(message.MediaUrl0);
+    const response = await findReponse(question);
+    if (response) {
+      sendMessage(message.From, response);
+    } else {
+      sendMessage(
+        message.Form,
+        `Bonjour ! Comment puis-je vous aider aujourd'hui ?`
+      );
+    }
 
-  if (response) {
-    sendMessage(message.From, response);
   } else {
-    sendMessage(
-      message.Form,
-      `Bonjour ! Comment puis-je vous aider aujourd'hui ?`
-    );
+    const response = await findReponse(message.Body);
+    if (response) {
+      sendMessage(message.From, response);
+    } else {
+      sendMessage(
+        message.Form,
+        `Bonjour ! Comment puis-je vous aider aujourd'hui ?`
+      );
+    }
   }
 
-  res.json({ response });
+  res.json({ message: "Sending ... " });
 });
 
 const port = 7001;
