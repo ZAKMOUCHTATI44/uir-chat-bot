@@ -20,18 +20,19 @@ export const findResponse = async (userInput: string) => {
 `;
 
   const prompt = `
-  You are an assistant from Université Internationale de Rabat, specializing in providing accurate and helpful information. Use the following FAQs to answer the user's question.
+You are an assistant from Université Internationale de Rabat, specializing in providing accurate and helpful information. Use the following FAQs to answer the user's question.
 
 FAQs:
-${topFAQs.map((faq: any) => `Q: ${faq.question}\nA: ${faq.answer}`).join("\n")}
+${topFAQs.map((faq) => `Q: ${faq.question}\nA: ${faq.answer}`).join("\n")}
 
 User: ${userInput}
 Answer:
 `;
 
   const completion = await openai.chat.completions.create({
-    model: "gpt-4",
+    model: "gpt-4o",
     messages: [{ role: "user", content: prompt }],
+    temperature: 0.7,
   });
 
   const answer = completion.choices[0].message?.content;

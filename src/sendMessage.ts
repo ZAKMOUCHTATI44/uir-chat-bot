@@ -2,7 +2,6 @@ import { twilioInstance } from "./twilio";
 
 export async function sendMessage(sendTo: string, message: string) {
   const client = await twilioInstance();
-
   client.messages
     .create({
       body: message,

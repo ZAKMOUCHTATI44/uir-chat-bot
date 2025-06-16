@@ -30,7 +30,6 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
         `Bonjour ! Comment puis-je vous aider aujourd'hui ?`
       );
     }
-
   } else {
     const response = await findReponse(message.Body);
     if (response) {
@@ -44,6 +43,19 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
   }
 
   res.json({ message: "Sending ... " });
+});
+
+app.post("/ask-chat-gpt", async (req: Request, res: Response) => {
+  const message = req.body.Body;
+
+
+  sendMessage(
+    "whatsapp:+18002428478",
+    message
+  );
+
+
+  res.json({ message });
 });
 
 const port = 7001;

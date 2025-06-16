@@ -3,15 +3,20 @@ import { OpenAIEmbeddings } from "@langchain/openai";
 import { PrismaClient, Prisma, Document } from "@prisma/client";
 import dotenv from "dotenv";
 import { OpenAI } from "openai";
+
 dotenv.config();
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
+if (!process.env.OPENAI_API_KEY) {
+  throw new Error("Missing OPENAI_API_KEY in environment variables");
+}
 
-export const findReponse = async (userInput: string) => {
-  const db = new PrismaClient();
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-  // Create vector store instance for searching existing documents
-  const vectorStore = PrismaVectorStore.withModel<Document>(db).create(
+const db = new PrismaClient();
+
+// Helper to create vector store
+const createVectorStore = () => {
+  return PrismaVectorStore.withModel<Document>(db).create(
     new OpenAIEmbeddings(),
     {
       prisma: Prisma,
@@ -24,34 +29,48 @@ export const findReponse = async (userInput: string) => {
       },
     }
   );
+};
 
-  // Perform similarity search on existing documents
-  const results = await vectorStore.similaritySearch(userInput, 1);
+export const findReponse = async (userInput: string): Promise<string> => {
+  try {
+    const vectorStore = createVectorStore();
 
-  results.map((result) => {
-    console.log(result.metadata.answer);
-    console.log(result.metadata.question);
-  });
+    const results = await vectorStore.similaritySearch(userInput, 3); // fetch top 3 for better context
 
-  const prompt = `
-    You are an assistant from Université Internationale de Rabat, specializing in providing accurate and helpful information. Use the following FAQs to answer the user's question.
+    if (!results || results.length === 0) {
+      return "Je suis désolé, je n'ai pas trouvé de réponse correspondante à votre question.";
+    }
 
-  FAQs:
-  ${results
-    .map(
-      (result) => `Q: ${result.metadata.question}\nA: ${result.metadata.answer}`
-    )
-    .join("\n")}}
-  User: ${userInput}
-  Answer:
-  `;
+    const faqs = results
+      .map(
+        (result, index) =>
+          `Q${index + 1}: ${result.metadata.question}\nA${index + 1}: ${result.metadata.answer}`
+      )
+      .join("\n");
 
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4",
-    messages: [{ role: "user", content: prompt }],
-  });
+    const prompt = `
+Vous êtes un assistant de l'Université Internationale de Rabat. Utilisez les questions fréquentes ci-dessous pour répondre de manière claire, précise et professionnelle à l'utilisateur.
 
-  const answer = completion.choices[0].message?.content;
+FAQs :
+${faqs}
 
-  return answer;
+Question de l'utilisateur : ${userInput}
+Réponse :
+`;
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: [{ role: "user", content: prompt }],
+      temperature: 0.4,
+    });
+
+    const answer = completion.choices[0].message?.content?.trim();
+
+    return answer || "Je suis désolé, je ne peux pas répondre à cette question pour le moment.";
+  } catch (error) {
+    console.error("Erreur lors de la recherche de réponse :", error);
+    return "Une erreur est survenue lors du traitement de votre demande. Veuillez réessayer plus tard.";
+  } finally {
+    await db.$disconnect();
+  }
 };
