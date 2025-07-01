@@ -15,6 +15,8 @@ app.use(express.json());
 app.post("/uir-chat-bot", async (req: Request, res: Response) => {
   const message = req.body;
 
+  
+
   if (!message) {
     res.status(400).send("No question provided");
   }
@@ -22,24 +24,24 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
   if (message.MediaContentType0 === "audio/ogg") {
     const question = await handleAudio(message.MediaUrl0);
     const response = await findReponse(question);
-    if (response) {
-      sendMessage(message.From, response);
-    } else {
-      sendMessage(
-        message.Form,
-        `Bonjour ! Comment puis-je vous aider aujourd'hui ?`
-      );
-    }
+    sendMessage(message.From, response);
+    // if (response) {
+    // } else {
+    //   sendMessage(
+    //     message.Form,
+    //     `Bonjour ! Comment puis-je vous aider aujourd'hui ?`
+    //   );
+    // }
   } else {
     const response = await findReponse(message.Body);
-    if (response) {
-      sendMessage(message.From, response);
-    } else {
-      sendMessage(
-        message.Form,
-        `Bonjour ! Comment puis-je vous aider aujourd'hui ?`
-      );
-    }
+    sendMessage(message.From, response);
+    // if (response) {
+    // } else {
+    //   sendMessage(
+    //     message.Form,
+    //     `Bonjour ! Comment puis-je vous aider aujourd'hui ?`
+    //   );
+    // }
   }
 
   res.json({ message: "Sending ... " });

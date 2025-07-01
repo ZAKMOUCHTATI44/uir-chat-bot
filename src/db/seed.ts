@@ -4,8 +4,6 @@ import { PrismaClient, Prisma, Document } from "@prisma/client";
 
 export const run = async () => {
   const db = new PrismaClient();
-
-  // Use the `withModel` method to get proper type hints for `metadata` field:
   const vectorStore = PrismaVectorStore.withModel<Document>(db).create(
     new OpenAIEmbeddings(),
     {
@@ -295,228 +293,151 @@ export const run = async () => {
   Bénéficiaire : Université Internationale de Rabat`,
     },
     {
-      question: "Que dois-je faire après avoir effectué un virement ?",
-      answer: `Scannez le justificatif de paiement
-   Indiquez votre nom et prénom
-  Envoyez-le par mail à : comptable@uir.ac.ma`,
-    },
-    {
-      question: "Que se passe-t-il en cas de retard de paiement ?",
-      answer: `L’UIR peut entamer une procédure de recouvrement.
-  Mais une facilité de paiement peut être accordée, sur demande et après étude de votre dossier.`,
-    },
-    {
-      question: "Puis-je bénéficier d’une bourse ou d’un prêt étudiant ?",
+      question:
+        "Quels sont les premiers pas pour soumettre une candidature à l’UIR après le bac ?",
       answer:
-        "Oui ! L’UIR propose des solutions de financement (bourses, prêts) pour accompagner les étudiants dans le besoin.",
-    },
-    {
-      question: "Quand faut-il déposer la demande de financement ?",
-      answer: `Lors de l’inscription, en plus du règlement des frais d’inscription.
-   Il faut aussi remettre deux titres de paiement couvrant la totalité des frais de scolarité.`,
+        "1. Créer un compte candidat sur : https://candidature.uir.ac.ma\n2. Renseigner vos informations personnelles et académiques\n3. Sélectionner la ou les filières de votre choix\n4. Régler les frais de concours : 750 Dhs pour 2 concours, 1500 Dhs pour plus de 2",
     },
     {
       question:
-        "Où puis-je trouver plus d’informations sur les bourses ou prêts ?",
+        "Je souhaite intégrer un master à l’UIR, comment dois-je procéder ?",
       answer:
-        "Pour plus d’informations, vous pouvez consulter notre site web bourse.uir.ac.ma ou écrire à : bourse@uir.ac.ma",
-    },
-    {
-      question: "Est-ce que les chambres de la résidence sont équipées ?",
-      answer: `Oui, les chambres du complexe résidentiel de l’UIR sont équipées de :
-  Sommier et matelas
-  Bureau
-  Etagères
-  Placards de rangement à clé
-  Sanitaires (lavabo, WC, douche, évier, miroir)
-  Rideaux en tissu
-  Mini réfrigérateur
-  Chauffage électrique`,
-    },
-    {
-      question: "Le campus dispose-t-il d’un restaurant ?",
-      answer:
-        "Oui le campus dispose d'un restaurant universitaire et 4 cafétérias qui offrent aux étudiants des repas équilibrés à prix modique au plus près de leur lieu de formation.",
-    },
-    {
-      question: "Y-a-t-il un couvre-feu pour la résidence ?",
-      answer: `Les horaires d'accès de la cité universitaire sont de 06h00 à 00h00 et les horaires de visites, de 09h00 à 22h30.`,
-    },
-    {
-      question: `Est-ce que l’université propose des services médicaux aux étudiants ?`,
-      answer: `Afin de veiller sur la santé de ses étudiants, l’Université Internationale de Rabat propose un centre médical accessible à l’ensemble des étudiants de l’UIR avec la mise à disposition d’une ambulance 24h/24 7j/7 sur le campus en cas de nécessité.
-      
-  L’UIR veille aussi sur la santé mentale de ses étudiants, et met à disposition une cellule d’écoute.    `,
-    },
-    {
-      question: "Existe-t-il une bibliothèque au sein de l’université ?",
-      answer: `Avec plus de 80 000 ouvrages, la bibliothèque de l’UIR propose des ouvrages dans plusieurs disciplines : Ingénierie, automobile, aérospatiale, Architecture, Sciences politiques, Droit des affaires, Ingénierie de l'Energie, Médecine, Informatique et logistique en plus de 80 000 ressources électroniques.
-  
-  La bibliothèque est accessible sur le campus, cependant l’UIR détient aussi une bibliothèque numérique pour un accès digital.`,
+        "1. Créer un compte candidat sur : https://candidature.uir.ac.ma/fr/register-superieur\n2. Renseigner vos informations personnelles et académiques\n3. Sélectionner la ou les filières de votre choix",
     },
     {
       question:
-        "Quels types de chambres sont disponibles à la résidence universitaire de l’UIR ?",
-      answer: `Chambre simple
-  Chambre simple avec balcon
-  Chambre simple plus
-  Chambre double
-  Chambre double plus`,
+        "Comment effectuer le paiement des frais pour les concours de l’UIR ?",
+      answer:
+        "Les frais peuvent être réglés par carte bancaire sur le site, ou par virement bancaire auprès d’une banque CIH. Une fois le virement effectué, scanner le justificatif avec nom/prénom et l’envoyer à comptable@uir.ac.ma",
     },
     {
       question:
-        "Quels sont les tarifs des chambresde la résidence universitaire de l’UIR ?",
-      answer: `Chambre simple (RDC) : 2 800 DH/mois
-  Chambre simple plus (RDC) : 3 150 DH/mois
-  Chambre double (RDC) : 2 000 DH/mois
-  Chambre double plus (RDC) : 2 200 DH/mois`,
+        "Est-il possible de rencontrer un conseiller pour discuter de mon projet d'études ?",
+      answer:
+        "Utilisez le lien suivant pour prendre rendez-vous : https://allouir.uir.ac.ma/",
     },
     {
       question:
-        "Quelles sont les modalités de réservation d’une chambre à l’UIR ?",
-      answer: `Pour réserver une chambre, les étapes sont les suivantes :
-  
-  Accéder à la plateforme de réservation : citeuir.uir.ac.ma
-  Choisir le type de chambre souhaité.
-  Effectuer le paiement du 1er semestre, du forfait mensuel pour les espaces communs (84 DH/mois) et du dépôt de garantie de 3 000 DH TTC dans un délai de 72 heures suivant la demande de réservation.
-  Télécharger le justificatif de paiement sur la plateforme`,
+        "Qui contacter pour des questions générales sur les admissions à l’UIR ?",
+      answer: "Tél : +212 (0)5 30 10 40 63\nEmail : concours@uir.ac.ma",
+    },
+    {
+      question: "Où puis-je consulter les formations proposées par l’UIR ?",
+      answer:
+        "Le catalogue est disponible ici : https://www.uir.ac.ma/upload/media/67f9219a3b152115732768.pdf",
     },
     {
       question:
-        "Quels sont les modes de paiement acceptés pour la réservation ?",
-      answer: `Les paiements peuvent être effectués via :
-  Chèque à l’ordre de « Foncière UIR »
-  Carte bancaire
-  Virement bancaire sur le compte de la Foncière UIR auprès de la banque CIH, RIB : 230 810 4592924221014600 12
-  Paiement en ligne via le Centre Monétique Interbancaire (CMI)`,
+        "Quand auront lieu les épreuves orales pour les filières comme Droit ou Économie ?",
+      answer:
+        "Les concours sont oraux et ont lieu les : 12 avril, 10 mai, 17 juin, 18 juillet, 3 septembre",
     },
     {
       question:
-        "Est-il possible d’annuler une réservation et d’obtenir un remboursement ?",
-      answer: `Oui, les conditions d'annulation sont les suivantes :
-  Annulation avant le 31 août : remboursement intégral.
-  Annulation avant le 1er octobre (sans check-in) : facturation du mois de septembre.
-  Après check-in : aucune demande d’annulation n’est recevable et aucun remboursement ne sera effectué.`,
+        "Combien dois-je prévoir pour les frais de scolarité si je choisis la filière Médecine ?",
+      answer:
+        "Médecine : 120 000 Dhs/an. D’autres frais peuvent s’ajouter selon le programme. Des frais d’inscription s’appliquent aussi (généralement 10 000 ou 20 000 Dhs).",
     },
     {
       question:
-        "Qui peut bénéficier d’une chambre à la résidence universitaire de l’UIR ?",
-      answer: `Les chambres sont attribuées en priorité aux :
-  Nouveaux résidents
-  Résidents souhaitant changer de chambre
-  Les étudiants résidant dans la région de Rabat, Salé, Témara ne sont pas priorisés lors de la campagne de réservation. Leurs demandes sont enregistrées sur une liste d’attente traitée en fonction de la disponibilité en début d’année universitaire.`,
-    },
-    {
-      question: "Quels services sont inclus dans le loyer ?",
-      answer: `Le loyer comprend :
-  Forfait énergétique : eau froide (2 m³), eau chaude (1 m³) et électricité (20 KWH)
-  Accès aux espaces communs : moyennant un forfait mensuel de 84 DH TTC`,
+        "Quels documents les étudiants étrangers doivent-ils préparer pour s’inscrire ?",
+      answer:
+        "Créer un compte candidat, fournir les pièces demandées (dont équivalence), prendre rendez-vous pour finaliser l’inscription. Documents spécifiques disponibles selon diplôme (bac, post-bac).",
     },
     {
       question:
-        "Où puis-je obtenir plus d'informations ou poser des questions sur l'hébergement ?",
-      answer: `Pour toute information complémentaire, vous pouvez :
-  Envoyer un e-mail à : hebergementuir@uir.ac.ma
-  Appeler au : 05 30 11 20 65/66
-  Vous rendre aux locaux administratifs situés au RDC de la Résidence 6, du lundi au vendredi (8h30-19h00) et le samedi matin (8h30-13h00).`,
-    },
-    {
-      question: "Qu'est-ce que le PASS UIR ?",
-      answer: `Le PASS UIR est un service de navettes subventionné par l'Université Internationale de Rabat, destiné à faciliter les déplacements des étudiants entre le campus et les villes de Rabat, Salé et Témara.`,
-    },
-    {
-      question: "Quelles sont les lignes desservies par le PASS UIR ?",
-      answer: `Le service couvre plusieurs stations :
-  Rabat : Agdal (Agence INWI), Tour Hassan, Hay Riad, Biougnach
-  Salé : Gare Tabriquet, Bab El Mrissa
-  Témara : Parking ACIMA, Harhoura – Le Rivage Palace`,
-    },
-    {
-      question: "Quels sont les horaires des navettes ?",
-      answer: `Les navettes fonctionnent du lundi au vendredi, avec des départs réguliers le matin, l'après-midi et le soir. Des services sont également disponibles le samedi et le dimanche, bien que les horaires puissent varier.`,
-    },
-    {
-      question: "Quel est le tarif du PASS UIR ?",
-      answer: `Les navettes fonctionnent du lundi au vendredi, avec des départs réguliers le matin, l'après-midi et le soir. Des services sont également disponibles le samedi et le dimanche, bien que les horaires puissent varier.
-  Les tarifs pour l'année académique 2024/2025 sont les suivants :
-  Annuel : 3 500 MAD
-  Semestriel : 2 100 MAD
-  Mensuel : 700 MAD`,
-    },
-    {
-      question: "Quels documents dois-je présenter pour accéder aux navettes ?",
+        "Je suis dans une situation financière difficile, l’UIR peut-elle m’aider ?",
       answer:
-        "Les étudiants doivent impérativement être munis de leur carte d'étudiant ou du reçu de paiement pour accéder aux navettes.",
+        "Oui. Vous pouvez faire une demande de bourse sur https://bourse.uir.ac.ma avec votre email UIR. Remplissez le formulaire en ligne et joignez les pièces demandées.",
+    },
+    {
+      question: "Y a-t-il des frais pour passer les concours à l’UIR ?",
+      answer:
+        "Oui. 750 Dhs pour 2 concours, 1500 Dhs pour plusieurs concours. Ces frais ne sont pas remboursables.",
+    },
+    {
+      question: "Combien coûte un logement en résidence UIR par mois ?",
+      answer:
+        "Les tarifs varient selon l’étage et le type de chambre. Par exemple : Chambre simple au RDC : 2950 Dhs, Chambre simple + 4ème étage : 3675 Dhs.",
+    },
+    {
+      question: "Qui est responsable des logements étudiants à l’UIR ?",
+      answer:
+        "M. Mustapha Iguilem — Email : mustapha.iguilem@uir.ac.ma — Tél : +212 (0)5 30 10 30 43",
+    },
+    {
+      question: "L’UIR propose-t-elle des prêts bancaires pour les étudiants ?",
+      answer:
+        "Oui, avec la Banque Populaire. Prêt bonifié jusqu’à 50 000 Dhs/an selon le cycle. UIR prend en charge les intérêts pendant les études.",
+    },
+    {
+      question: "À quelle date démarre la rentrée universitaire à l’UIR ?",
+      answer:
+        "Le calendrier de la rentrée universitaire 2025–2026 sera communiqué ultérieurement.",
+    },
+    // === SCIENCES DE LA SANTÉ (2026) ===
+    {
+      question:
+        "Quand a lieu le concours commun Médecine et Médecine Dentaire en 2026 ?",
+      answer:
+        "Aucune date spécifique n'est mentionnée pour le concours commun Médecine/Dentaire en 2026 dans le calendrier fourni.",
     },
     {
       question:
-        "Le PASS UIR est-il disponible pendant les vacances universitaires ?",
+        "Quand sont les épreuves pour la Licence en Biotechnologie en 2026 ?",
       answer:
-        "Le service peut être suspendu pendant les vacances universitaires, les jours fériés et le mois d'août. ",
+        "Les épreuves (écrit+oral) ont lieu les :<br>- 07 mai<br>- 24 juin<br>- 24 juillet<br>- 30 août.",
     },
     {
-      question: "Est-ce que c’est une université privée ou publique ?",
+      question: "Quand est le concours de Génie Biomédical en 2026 ?",
       answer:
-        "Nous sommes une université privée, néanmoins, tous nos diplômes sont équivalents aux diplômes délivrés par des institutions étatiques, aussi, nous offres des possibilités de bourses et de financement des études.",
+        "Les dates sont :<br>- 14 mai<br>- 23 juin<br>- 14 juillet<br>- 17 juillet<br>- 27 août (tous en écrit+oral).",
+    },
+    // === SCIENCES DE LA SANTÉ ===
+    {
+      question:
+        "Quand a lieu le concours commun Médecine et Médecine Dentaire ?",
+      answer:
+        "Aucune date spécifique n'est mentionnée pour le concours commun Médecine/Dentaire dans le calendrier fourni.",
     },
     {
-      question: "Quels sont les programmes que vous proposez ?",
+      question: "Quand sont les épreuves pour la Licence en Biotechnologie ?",
       answer:
-        "L’université propose un catalogue riche en formations, réparties entre les trois cycles de formation et les quatre collèges :\n\nPost bac :\nCollège Ingénierie et Architecture :\n- Ingénierie informatique \n- Ingénierie de l’énergie\n- Ingénierie automobile\n- Ingénierie aérospatiale\n- Génie civil\n- Architecture\n\nCollège des sciences sociales :\n- Droit des affaires\n- Sciences politiques\n- Communication et médias\n- Psychologie\n- Economie\n\nCollège Management :\n- International program in management\n- International talents in business\n\nCollège Santé :\n- Médecine\n- Médecine dentaire\n- Biotechnologie\n- Génie biomédical\n- Infirmier polyvalent\n- Infirmier en anesthésie et réanimation\n- Technicien d’imagerie médicale\n- Technicien de laboratoire\n\nAdmission par voie de passerelle :\nAccès possible en 2e, 3e ou 4e année selon le cursus.\n\nMasters :\n- Intelligence Artificielle\n- Politiques publiques\n- Gouvernance et Institutions Internationales\n- Sécurité Internationale\n- Droit Notarial des Affaires\n- Droit des Affaires et Management des Entreprises\n- Droit des Affaires et Fiscalité\n- Juriste d'Affaires International\n- Communication des Organisations\n- المهن القانونية و القضائية\n- International Finance Comptabilité\n- Contrôle – Audit\n- Grande Ecole Programme in Management (2e année)\n- International Business\n- Human Capital & Talent Management\n- Strategic & Digital Marketing\n- Supply Chain Management & Purchasing\n- Business Analytics & Data Science\n- Agile Project Management & Innovation\n- Nutrition Humaine et Techniques Nucléaires\n- Sciences Biomédicales Appliquées",
+        "Les épreuves (écrit+oral) ont lieu les :<br>- 07 mai<br>- 24 juin<br>- 24 juillet<br>- 30 août.",
     },
     {
-      question: "Quels sont les frais de vos formations ?",
+      question: "Quand est le concours de Génie Biomédical ?",
       answer:
-        "Les tarifs dépendent de la formation choisie, ci-après les tarifs par formation :\n\n- Ingénierie : Post bac et Admission par voie de passerelle 76000 DH, masters 72000 DH\n- Architecture : 95000 DH\n- Sciences sociales : 72000 DH\n- Management : 75000 DH pour les Post bac et AST, 80000 DH pour les masters",
+        "Les dates sont :<br>- 14 mai<br>- 23 juin<br>- 14 juillet<br>- 17 juillet<br>- 27 août (tous en écrit+oral).",
     },
+
+    // === SCIENCES PARAMÉDICALES ===
     {
-      question: "Quelles sont les matières que je passerai lors du concours ?",
+      question: "Quand ont lieu les concours pour Infirmier Polyvalent ?",
       answer:
-        "Les épreuves à passer dépendent d’un programme à l’autre et d’un niveau à l’autre.\n\n- Certaines filières ont des épreuves uniquement orales (Droit, Communication, etc.).\n- Médecine et Médecine dentaire : concours écrit.\n- Ingénierie, Architecture, Biotechnologie, etc. : concours écrit + oral.\n- Pour les admissions passerelles : étude du dossier + entretien si nécessaire.\n- Pour les masters RBS : concours écrit + oral.\n- Pour les autres masters : étude de dossier + entretien.",
-    },
-    {
-      question: "Quelles sont les dates de concours ?",
-      answer:
-        "Les dates des concours sont listées par collège et filière. Par exemple :\n\nCollège Ingénierie et Architecture :\n- Ingénierie : 3 mai, 22 juin, 14 juillet, 29 août 2025\n- Architecture : 4 mai, 21 juin, 15 juillet, 28 août 2025\n\nSciences sociales :\n- 12 avril, 10 mai, 14 juin, 18 juillet, 27 août, 3 septembre\n\nManagement :\n- International talents in business : 12 avril (écrit), 19 avril (oral)\n- International program in management : 26 avril (écrit), 3 mai (oral)\n\nSanté :\n- Génie biomédical : 14 mai, 23 juin, 17 juillet, 27 août 2025\n- Biotechnologie : 7 mai, 24 juin, 24 juillet, 30 août 2025\n- Infirmier & technicien : 6 mai, 25 juin, 23 juillet, 13 septembre 2025\n\nNB : Pour Médecine et Médecine dentaire, la date sera communiquée par le ministère.",
-    },
-    {
-      question: "Est-ce que je peux passer le concours à distance ?",
-      answer:
-        "Les concours se déroulent en présentiel, néanmoins si vous n’êtes pas au Maroc le moment venu, nous pouvons étudier la possibilité du concours en ligne, veuillez nous préciser la formation et le niveau qui vous intéressent.",
+        "Les dates sont :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre (tous en écrit+oral).",
     },
     {
       question:
-        "Est-ce que je peux avoir des exemplaires des précédentes épreuves ?",
+        "Quand est le concours pour Infirmier en Anesthésie et Réanimation ?",
       answer:
-        "Les exemplaires des précédentes épreuves sont téléchargeables depuis votre espace candidat, sur la vue « Choix et convocations ».",
+        "Les dates sont :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre (tous en écrit+oral).",
+    },
+    {
+      question: "Quand est l'oral pour Technicien d'Imagerie Médicale ?",
+      answer:
+        "Les oraux (avec étude de dossier) ont lieu aux mêmes dates que les écrits :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre.",
     },
     {
       question:
-        "J’ai candidaté à la filière XXX pour un accès en 2ème année mais je n’ai pas eu de retour.",
+        "Quand sont les épreuves pour la Licence en Nutrition et Diététique ?",
       answer:
-        "Prière de nous adresser votre nom complet ainsi que la filière choisie sur cette adresse mail, nous en ferons le suivi et vous reviendrons incessamment : concours@uir.ac.ma",
+        "Les épreuves (étude de dossier + oral) ont lieu les :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre.",
     },
     {
-      question:
-        "J’ai candidaté à la filière XXX pour un accès master mais le statut apparait en tant que « validé », mais je n’ai pas eu de retour sur ce qui va suivre.",
+      question: "Quand est le concours pour Technicien de Laboratoire ?",
       answer:
-        "Votre dossier a été validé sur le plan académique, nos collègues en charge de la filière choisie prendront attache avec vous incessamment pour un entretien.",
-    },
-    {
-      question: "Est-ce que je peux bénéficier d’une bourse ?",
-      answer:
-        "Nos bourses sont ouvertes à tous nos candidats mais avec des conditions.\n- Les étudiants inscrits à l’un des programmes de l’UIR et disposant d’une adresse électronique UIR peuvent déposer leurs dossiers de demande de bourse en ligne via bourse.uir.ac.ma.\n- Le dossier comprend un formulaire + pièces justificatives.\n- Confirmation et suivi de la demande sont disponibles sur la plateforme.\n- La décision est envoyée par mail.\n- Si acceptée, les documents originaux doivent être déposés au bureau de bourse dans les délais.\n- Contact : bourses@uir.ac.ma ou 0530103000.",
-    },
-    {
-      question: "Est-ce que le transport est assuré ?",
-      answer:
-        "Une prestation de transport couvre la région Rabat-Salé-Témara. Pour plus de détails, veuillez nous contacter sur le 0530103000.",
-    },
-    {
-      question:
-        "Est-ce que l’université propose le service d’hébergement, si oui, quels sont les tarifs ?",
-      answer:
-        "Une prestation hébergement est proposée aux étudiants n’habitant pas à la région Rabat. Une fois que le candidat est admis, il procède à l’inscription puis à la réservation de sa chambre. Pour plus de détails, veuillez nous contacter sur le 0530103000 ou par mail sur hebergementuir@uir.ac.ma.",
+        "Les épreuves (étude de dossier + oral) ont lieu les :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre.",
     },
   ];
 

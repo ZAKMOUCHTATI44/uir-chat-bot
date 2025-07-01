@@ -17,3 +17,17 @@ CREATE TABLE "Document" (
 
     CONSTRAINT "Document_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateTable
+CREATE TABLE "leads" (
+    "id" SERIAL NOT NULL,
+    "profileName" TEXT NOT NULL,
+    "phone" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "leads_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "leads_phone_key" ON "leads"("phone");

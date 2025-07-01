@@ -31,45 +31,77 @@ const createVectorStore = () => {
   );
 };
 
+export async function generateEmbedding(text: string) {
+  if (!text || text.trim() === "") {
+    return null;
+  }
+  const embedding = await openai.embeddings.create({
+    model: "text-embedding-ada-002",
+    input: text,
+  });
+
+  return embedding;
+}
+
 export const findReponse = async (userInput: string): Promise<string> => {
   try {
-    const vectorStore = createVectorStore();
-
-    const results = await vectorStore.similaritySearch(userInput, 3); // fetch top 3 for better context
-
-    if (!results || results.length === 0) {
-      return "Je suis désolé, je n'ai pas trouvé de réponse correspondante à votre question.";
+    // Check if it's a greeting or empty input
+    if (
+      !userInput.trim() ||
+      /^(bonjour|salut|hello|hi|hey|bonsoir)/i.test(userInput.trim())
+    ) {
+      return "Bonjour ! Je suis l'assistant virtuel de l'Université Internationale de Rabat (UIR). Comment puis-je vous aider aujourd'hui ?";
     }
 
+    const vectorStore = createVectorStore();
+    const results = await vectorStore.similaritySearch(userInput, 3);
+
+    console.log(results);
     const faqs = results
       .map(
         (result, index) =>
-          `Q${index + 1}: ${result.metadata.question}\nA${index + 1}: ${result.metadata.answer}`
+          `[Question similaire ${index + 1}]: ${result.metadata.question}\n` +
+          `[Réponse associée]: ${result.metadata.answer}`
       )
-      .join("\n");
+      .join("\n\n");
 
     const prompt = `
-Vous êtes un assistant de l'Université Internationale de Rabat. Utilisez les questions fréquentes ci-dessous pour répondre de manière claire, précise et professionnelle à l'utilisateur.
+Vous êtes l'assistant virtuel de l'Université Internationale de Rabat. Votre personnalité est:
+- Amical(e) et professionnel(le)
+- Naturel(le) dans vos réponses
+- Serviable et précis(e)
+- Utilise un langage courant mais respectueux
 
-FAQs :
+Contexte disponible:
 ${faqs}
 
-Question de l'utilisateur : ${userInput}
-Réponse :
-`;
+Guide de réponse:
+1. Répondez comme un humain, pas comme un robot
+2. Soyez concis mais complet
+3. Si vous n'êtes pas sûr, proposez des alternatives
+4. Utilisez des formulations naturelles comme "Je vous conseille..." ou "Pour cela, vous pouvez..."
+
+Question: "${userInput}"
+
+Répondez maintenant comme si vous parliez à un étudiant ou visiteur devant vous, de manière naturelle et utile:`;
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4",
       messages: [{ role: "user", content: prompt }],
-      temperature: 0.4,
+      temperature: 0.6,
+      max_tokens: 250,
     });
 
     const answer = completion.choices[0].message?.content?.trim();
 
-    return answer || "Je suis désolé, je ne peux pas répondre à cette question pour le moment.";
+    return (
+      answer ||
+      "Je n'ai pas assez d'informations pour répondre précisément à votre question. " +
+        "Vous pouvez visiter notre site web www.uir.ac.ma ou contacter l'accueil au +212 5 30 10 30 00 pour plus d'aide."
+    );
   } catch (error) {
-    console.error("Erreur lors de la recherche de réponse :", error);
-    return "Une erreur est survenue lors du traitement de votre demande. Veuillez réessayer plus tard.";
+    console.error("Erreur:", error);
+    return "Désolé, je rencontre une difficulté technique. Pourriez-vous reformuler votre question ou réessayer plus tard ?";
   } finally {
     await db.$disconnect();
   }
