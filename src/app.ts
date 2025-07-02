@@ -47,12 +47,12 @@ export const findReponse = async (userInput: string): Promise<string> => {
 
   try {
     // Check if it's a greeting or empty input
-    if (
-      !userInput.trim() ||
-      /^(bonjour|salut|hello|hi|hey|bonsoir)/i.test(userInput.trim())
-    ) {
-      return "Bonjour ! Je suis l'assistant virtuel de l'Université Internationale de Rabat (UIR). Comment puis-je vous aider aujourd'hui ?";
-    }
+    // if (
+    //   !userInput.trim() ||
+    //   /^(bonjour|salut|hello|hi|hey|bonsoir)/i.test(userInput.trim())
+    // ) {
+    //   return "Bonjour ! Je suis l'assistant virtuel de l'Université Internationale de Rabat (UIR). Comment puis-je vous aider aujourd'hui ?";
+    // }
 
     const vectorStore = createVectorStore();
     const results = await vectorStore.similaritySearch(userInput, 3);
