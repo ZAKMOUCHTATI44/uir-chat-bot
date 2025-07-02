@@ -395,10 +395,8 @@ export const run = async () => {
     },
     // === SCIENCES DE LA SANTÉ ===
     {
-      question:
-        "Quand a lieu le concours commun Médecine et Médecine Dentaire ?",
-      answer:
-        "Aucune date spécifique n'est mentionnée pour le concours commun Médecine/Dentaire dans le calendrier fourni.",
+      question: "Quand a lieu le concours commun Médecine et Médecine Dentaire ?",
+      answer: "Le concours commun Médecine et Médecine Dentaire a lieu le 14 juillet.",
     },
     {
       question: "Quand sont les épreuves pour la Licence en Biotechnologie ?",
