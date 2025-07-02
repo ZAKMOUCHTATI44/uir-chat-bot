@@ -44,6 +44,8 @@ export async function generateEmbedding(text: string) {
 }
 
 export const findReponse = async (userInput: string): Promise<string> => {
+
+  console.log("FIND RESPOSNE >.....")
   try {
     // Check if it's a greeting or empty input
     if (
