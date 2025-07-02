@@ -37,6 +37,8 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
   let basicContext = latestMessages.map(item => item.body).join(' ');
 
   console.log(basicContext)
+  console.log("**************************")
+ 
 
   if (!message) {
     res.status(400).send("No question provided");
@@ -50,6 +52,7 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
     await savedMessage(question, message.From, "audio");
   } else {
     const response = await findReponse(`${basicContext} ${message.Body}`);
+    console.log(`${basicContext} ${message.Body}`)
     sendMessage(message.From, response);
 
     await savedMessage(message.Body, message.From, "text");
