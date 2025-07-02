@@ -28,7 +28,7 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
   // Get The 5 latest message for understand the context
 
   const latestMessages = await prisma.message.findMany({
-    take: 5,
+    take: 2,
     where: {
       from: message.From,
     },
@@ -36,6 +36,7 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
 
   let basicContext = latestMessages.map(item => item.body).join(' ');
 
+  console.log(basicContext)
 
   if (!message) {
     res.status(400).send("No question provided");
@@ -51,7 +52,6 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
     const response = await findReponse(`${basicContext} ${message.Body}`);
     sendMessage(message.From, response);
 
-    // Saved the message for get more context
     await savedMessage(message.Body, message.From, "text");
   }
 
