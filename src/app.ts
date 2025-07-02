@@ -44,18 +44,36 @@ export async function generateEmbedding(text: string) {
 }
 
 export const findReponse = async (userInput: string): Promise<string> => {
-
   try {
-    // Check if it's a greeting or empty input
-    // if (
-    //   !userInput.trim() ||
-    //   /^(bonjour|salut|hello|hi|hey|bonsoir)/i.test(userInput.trim())
-    // ) {
-    //   return "Bonjour ! Je suis l'assistant virtuel de l'Université Internationale de Rabat (UIR). Comment puis-je vous aider aujourd'hui ?";
-    // }
-
     const vectorStore = createVectorStore();
     const results = await vectorStore.similaritySearch(userInput, 3);
+
+    // Check if the query is date-related
+    if (/date|jour|horaire|échéance|deadline|temps|quand/i.test(userInput)) {
+      // Extract all dates from the results and sort them chronologically
+      const dates = results
+        .flatMap(result => {
+          // Extract dates from both question and answer
+          const text = `${result.metadata.question} ${result.metadata.answer}`;
+          const dateMatches = text.match(/\d{1,2}\/\d{1,2}\/\d{2,4}|\d{1,2} \w+ \d{4}/g);
+          return dateMatches ? dateMatches.map(d => new Date(d)) : [];
+        })
+        .filter(date => !isNaN(date.getTime())) // Filter out invalid dates
+        .sort((a, b) => a.getTime() - b.getTime()); // Sort chronologically
+
+      if (dates.length > 0) {
+        const formattedDates = dates.map(date => 
+          date.toLocaleDateString('fr-FR', { 
+            weekday: 'long', 
+            day: 'numeric', 
+            month: 'long', 
+            year: 'numeric' 
+          })
+        ).join('\n- ');
+
+        return `Voici les dates pertinentes, classées par ordre chronologique :\n\n- ${formattedDates}\n\nPour plus de détails sur une date spécifique, n'hésitez pas à me demander.`;
+      }
+    }
 
     console.log(results);
     const faqs = results
@@ -81,6 +99,7 @@ Guide de réponse:
 2. Soyez concis mais complet
 3. Si vous n'êtes pas sûr, proposez des alternatives
 4. Utilisez des formulations naturelles comme "Je vous conseille..." ou "Pour cela, vous pouvez..."
+5. Pour les dates, présentez-les toujours dans l'ordre chronologique avec le format: "Lundi 15 janvier 2024"
 
 Question: "${userInput}"
 
@@ -107,3 +126,5 @@ Répondez maintenant comme si vous parliez à un étudiant ou visiteur devant vo
     await db.$disconnect();
   }
 };
+
+
