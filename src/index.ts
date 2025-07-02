@@ -28,7 +28,7 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
   // Get The 5 latest message for understand the context
 
   const latestMessages = await prisma.message.findMany({
-    take: 2,
+    take: 5,
     where: {
       from: message.From,
     },
