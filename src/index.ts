@@ -48,9 +48,9 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
     // Saved the message for get more context
     await savedMessage(question, message.From, "audio");
   } else {
-    const response = await findReponse(message.Body);
-    
-    sendMessage(`${basicContext} ${message.From}`, response);
+    const response = await findReponse(`${basicContext} ${message.Body}`);
+    sendMessage(message.From, response);
+
     // Saved the message for get more context
     await savedMessage(message.Body, message.From, "text");
   }
