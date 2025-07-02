@@ -12,8 +12,30 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+async function savedMessage(body: string, from: string, text: string) {
+  await prisma?.message.create({
+    data: {
+      to: "",
+      from: from,
+      body: body,
+      type: text,
+    },
+  });
+}
 app.post("/uir-chat-bot", async (req: Request, res: Response) => {
   const message = req.body;
+
+  // Get The 5 latest message for understand the context
+
+  const latestMessages = await prisma.message.findMany({
+    take: 5,
+    where: {
+      from: message.From,
+    },
+  });
+
+  let basicContext = latestMessages.map(item => item.body).join(' ');
+
 
   if (!message) {
     res.status(400).send("No question provided");
@@ -24,27 +46,13 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
     const response = await findReponse(question);
     sendMessage(message.From, response);
     // Saved the message for get more context
-    await prisma?.message.create({
-      data: {
-        to: "",
-        from: message.From,
-        body: question,
-        type: "audio",
-      },
-    });
+    await savedMessage(question, message.From, "audio");
   } else {
     const response = await findReponse(message.Body);
-    sendMessage(message.From, response);
-
+    
+    sendMessage(`${basicContext} ${message.From}`, response);
     // Saved the message for get more context
-    await prisma?.message.create({
-      data: {
-        to: "",
-        from: message.From,
-        body: message.Body,
-        type: "text",
-      },
-    });
+    await savedMessage(message.Body, message.From, "text");
   }
 
   res.json({ message: "Sending ... " });
@@ -52,9 +60,7 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
 
 app.post("/ask-chat-gpt", async (req: Request, res: Response) => {
   const message = req.body.Body;
-
   sendMessage("whatsapp:+18002428478", message);
-
   res.json({ message });
 });
 

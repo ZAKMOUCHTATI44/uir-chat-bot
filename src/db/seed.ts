@@ -439,6 +439,152 @@ export const run = async () => {
       answer:
         "Les épreuves (étude de dossier + oral) ont lieu les :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre.",
     },
+    // === GÉNIE CIVIL ===
+    {
+      question: "Quand ont lieu les concours de Génie Civil ?",
+      answer:
+        "Les épreuves (écrit+oral) ont lieu les :<br>- 03 mai<br>- 22 juin<br>- 16 juillet<br>- 29 août.",
+    },
+
+    // === INGÉNIERIE AÉROSPATIALE ET AUTOMOBILE ===
+    {
+      question:
+        "Quand sont les concours d'Ingénierie Aérospatiale et Automobile ?",
+      answer:
+        "Les épreuves (écrit+oral) ont lieu les :<br>- 03 mai<br>- 22 juin<br>- 16 juillet<br>- 29 août.",
+    },
+
+    // === INGÉNIERIE INFORMATIQUE ===
+    {
+      question: "Quand est le concours d'Ingénierie Informatique ?",
+      answer:
+        "Les épreuves (écrit+oral) ont lieu les :<br>- 03 mai<br>- 22 juin<br>- 16 juillet<br>- 29 août.",
+    },
+
+    // === INGÉNIERIE DE L'ÉNERGIE ===
+    {
+      question: "Quand ont lieu les concours d'Ingénierie de l'Énergie ?",
+      answer:
+        "Les épreuves (écrit+oral) ont lieu les :<br>- 03 mai<br>- 22 juin<br>- 16 juillet<br>- 29 août.",
+    },
+
+    // === ARCHITECTURE ===
+    {
+      question: "Quand sont les épreuves d'Architecture ?",
+      answer:
+        "Les épreuves (écrit+oral) ont lieu les :<br>- 03 mai<br>- 04 mai<br>- 21 juin<br>- 22 juin<br>- 15 juillet<br>- 16 juillet<br>- 28 août<br>- 29 août.",
+    },
+
+    // QUESTIONS SPÉCIFIQUES PAR DATE
+    {
+      question: "Quels concours ont lieu le 03 mai ?",
+      answer:
+        "Le 03 mai ont lieu les concours (écrit+oral) de :<br>- Génie Civil<br>- Ingénierie Aérospatiale et Automobile<br>- Ingénierie Informatique<br>- Ingénierie de l'Énergie<br>- Architecture",
+    },
+    {
+      question: "Quels concours ont lieu le 04 mai ?",
+      answer:
+        "Le 04 mai a lieu uniquement le concours d'Architecture (écrit+oral).",
+    },
+    {
+      question: "Quand sont les épreuves écrites pour l'IPM à RBS ?",
+      answer:
+        "Les écrits pour l'IPM ont lieu :<br>- 18 juin (écrit)<br>- 4 juillet (écrit)",
+    },
+    {
+      question: "Quand sont les oraux pour l'IPM à RBS ?",
+      answer:
+        "Les oraux pour l'IPM ont lieu :<br>- 25 juin (oral)<br>- 11 juillet (oral)",
+    },
+
+    // === PGE1 ===
+    {
+      question: "Quand a lieu le concours écrit du PGE1 ?",
+      answer: "L'écrit du PGE1 a lieu le 18 juin.",
+    },
+    {
+      question: "Quand est l'oral du PGE1 ?",
+      answer: "L'oral du PGE1 a lieu le 25 juin.",
+    },
+
+    // === ITB ===
+    {
+      question: "Quand est l'examen écrit pour l'ITB ?",
+      answer: "L'écrit pour l'ITB a lieu le 12 avril.",
+    },
+    {
+      question: "Quand est l'entretien oral pour l'ITB ?",
+      answer: "L'oral pour l'ITB a lieu le 19 avril.",
+    },
+
+    // === MASTERS RBS/PGE2 ===
+    {
+      question: "Quand ont lieu les épreuves pour les masters RBS ?",
+      answer: "Les masters RBS/PGE2 ont leurs épreuves (écrit+oral) le 17 mai.",
+    },
+
+    // === QUESTIONS PAR DATE ===
+    {
+      question: "Quels concours ont lieu le 18 juin ?",
+      answer: "Le 18 juin ont lieu :<br>- Écrit IPM<br>- Écrit PGE1",
+    },
+    {
+      question: "Quels programmes passent des épreuves en avril ?",
+      answer: "En avril :<br>- ITB : écrit le 12, oral le 19",
+    },
+    {
+      question: "Quels concours ont lieu en juillet ?",
+      answer: "En juillet :<br>- IPM : écrit le 4, oral le 11",
+    },
+    {
+      question: "Quand sont les oraux de Sciences Po ?",
+      answer:
+        "Les oraux de Sciences Po ont lieu aux dates suivantes :<br>- 12 avril<br>- 10 mai<br>- 17 juin<br>- 18 juillet<br>- 03 septembre",
+    },
+
+    // === PSYCHOLOGIE ===
+    {
+      question: "Quand ont lieu les concours de Psychologie ?",
+      answer:
+        "Les oraux de Psychologie se déroulent aux dates suivantes :<br>- 12 avril<br>- 10 mai<br>- 17 juin<br>- 18 juillet<br>- 03 septembre",
+    },
+
+    // === DROIT ===
+    {
+      question: "Quelles sont les dates des oraux de Droit ?",
+      answer:
+        "Les épreuves orales de Droit ont lieu :<br>- 12 avril<br>- 10 mai<br>- 17 juin<br>- 18 juillet<br>- 03 septembre",
+    },
+
+    // === ECONOMIE ===
+    {
+      question: "Quand se passent les oraux d'Économie ?",
+      answer:
+        "Les oraux d'Économie sont prévus aux dates :<br>- 12 avril<br>- 10 mai<br>- 17 juin<br>- 18 juillet<br>- 03 septembre",
+    },
+
+    // === COMMUNICATION & MÉDIAS ===
+    {
+      question: "Quand sont les épreuves de Communication et Médias ?",
+      answer:
+        "Les oraux de Communication & Médias ont lieu :<br>- 12 avril<br>- 10 mai<br>- 17 juin<br>- 18 juillet<br>- 03 septembre",
+    },
+
+    // === QUESTIONS PAR DATE ===
+    {
+      question: "Quels concours ont lieu le 12 avril ?",
+      answer:
+        "Le 12 avril ont lieu les oraux de :<br>- Sciences Po<br>- Psychologie<br>- Droit<br>- Économie<br>- Communication & Médias",
+    },
+    {
+      question: "Quels examens se déroulent en mai ?",
+      answer: "En mai :<br>- Tous les oraux (toutes filières) le 10 mai",
+    },
+    {
+      question: "Y a-t-il des concours en septembre ?",
+      answer:
+        "Oui, le 03 septembre ont lieu les oraux pour toutes les filières :<br>- Sciences Po<br>- Psychologie<br>- Droit<br>- Économie<br>- Communication & Médias",
+    },
   ];
 
   await vectorStore.addModels(
