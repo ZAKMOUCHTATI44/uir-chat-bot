@@ -29,5 +29,18 @@ CREATE TABLE "leads" (
     CONSTRAINT "leads_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "messages" (
+    "id" SERIAL NOT NULL,
+    "to" TEXT NOT NULL,
+    "from" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
+    "body" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "messages_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "leads_phone_key" ON "leads"("phone");

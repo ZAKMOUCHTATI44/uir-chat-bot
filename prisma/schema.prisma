@@ -38,3 +38,16 @@ model Lead {
 
   @@map("leads")
 }
+
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  to        String
+  from      String
+  type      String
+  body      String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("messages")
+}
