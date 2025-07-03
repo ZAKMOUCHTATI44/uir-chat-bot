@@ -395,8 +395,10 @@ export const run = async () => {
     },
     // === SCIENCES DE LA SANTÉ ===
     {
-      question: "Quand a lieu le concours commun Médecine et Médecine Dentaire ?",
-      answer: "Le concours commun Médecine et Médecine Dentaire a lieu le 14 juillet.",
+      question:
+        "Quand a lieu le concours commun Médecine et Médecine Dentaire ?",
+      answer:
+        "Le concours commun Médecine et Médecine Dentaire a lieu le 14 juillet.",
     },
     {
       question: "Quand sont les épreuves pour la Licence en Biotechnologie ?",
@@ -582,6 +584,89 @@ export const run = async () => {
       question: "Y a-t-il des concours en septembre ?",
       answer:
         "Oui, le 03 septembre ont lieu les oraux pour toutes les filières :<br>- Sciences Po<br>- Psychologie<br>- Droit<br>- Économie<br>- Communication & Médias",
+    },
+    {
+      question:
+        "Quelles filières d'ingénierie me sont accessibles avec un Bac Scientifique à l'UIR ?",
+      answer:
+        "Avec un Bac Scientifique, vous pouvez accéder à toutes les filières d'ingénierie : Génie Civil, Ingénierie de l'Énergie, Informatique, Aérospatial/Automobile, et Génie Biomédical.",
+    },
+    {
+      question:
+        "Mon Bac S option SVT me permet-il d'intégrer la filière Génie Civil ?",
+      answer:
+        "Oui, le Bac S option SVT est accepté pour le Génie Civil. Vous devrez passer les épreuves écrites en mathématiques/physique et un entretien oral.",
+    },
+    {
+      question:
+        "Puis-je faire médecine avec un Bac S option Mathématiques à l'UIR ?",
+      answer:
+        "Oui, la Faculté Internationale de Médecine accepte les Bac S option Mathématiques A/B. La sélection se fait sur note du Bac + épreuves écrites (SVT, Physique, Chimie, Mathématiques).",
+    },
+    {
+      question:
+        "Y a-t-il des prépas intégrées pour les filières scientifiques ?",
+      answer:
+        "Oui, toutes les filières d'ingénierie ont un cycle préparatoire intégré de 2 ans avant le cycle ingénieur de 3 ans.",
+    },
+    {
+      question:
+        "Quelle spécialité d'ingénierie conseillez-vous pour un Bac S avec forte dominante physique ?",
+      answer:
+        "L'Ingénierie Aérospatiale/Automobile ou l'Ingénierie de l'Énergie seraient particulièrement adaptées, avec leurs modules avancés en mécanique des fluides et thermodynamique.",
+    },
+    {
+      question:
+        "Puis-je intégrer directement la 2ème année si j'ai fait une prépa scientifique ailleurs ?",
+      answer:
+        "Oui, des concours d'accès en 2ème année sont possibles pour les filières d'ingénierie sous réserve d'équivalence de votre parcours.",
+    },
+    {
+      question:
+        "Les cours en Informatique sont-ils en français ou en anglais ?",
+      answer:
+        "Le cycle préparatoire est en français, mais les cours du cycle ingénieur (à partir de la 3ème année) sont dispensés en anglais.",
+    },
+    {
+      question:
+        "Quelle est la différence entre l'ESIN et le Génie Biomédical pour un Bac S ?",
+      answer:
+        "L'ESIN forme aux métiers du numérique (cloud, cybersécurité...), tandis que le Génie Biomédical combine ingénierie et sciences médicales (dispositifs médicaux, imagerie...).",
+    },
+    {
+      question:
+        "Avec mon Bac S, puis-je aussi postuler en Sciences Politiques ou Droit ?",
+      answer:
+        "Oui, ces filières sont accessibles avec tout type de Bac. Votre profil scientifique sera un atout pour les aspects analytiques.",
+    },
+    {
+      question:
+        "Y a-t-il des laboratoires pratiques pour les étudiants en ingénierie ?",
+      answer:
+        "Oui, l'UIR dispose de laboratoires équipés pour chaque spécialité (salles BIM pour le Génie Civil, simulateurs pour l'Aérospatial, plateformes cloud pour l'Informatique...).",
+    },
+    {
+      question:
+        "Quel pourcentage d'étudiants en ingénierie viennent de Bac S ?",
+      answer:
+        "Environ 85% des admis en cycle ingénieur sont titulaires d'un Baccalauréat Scientifique, toutes options confondues.",
+    },
+    {
+      question:
+        "Puis-je faire un double cursus Médecine/Ingénierie Biomédicale ?",
+      answer:
+        "Non, ces formations sont distinctes, mais des passerelles existent après la licence. Le Génie Biomédical offre cependant des modules communs avec la faculté de médecine.",
+    },
+    {
+      question: "Quels stages sont prévus durant le cycle ingénieur ?",
+      answer:
+        "4 stages obligatoires : stage ouvrier (4 semaines), stage technicien (4 semaines), stage recherche (3 mois) et PFE (5 mois). Certains peuvent être effectués à l'international.",
+    },
+    {
+      question:
+        "Mon Bac S me donne-t-il un avantage pour les concours d'entrée ?",
+      answer:
+        "Oui, les épreuves écrites portant sur les maths/physique, les bacheliers scientifiques sont souvent mieux préparés. Mais l'entretien oral évalue aussi votre motivation.",
     },
   ];
 
