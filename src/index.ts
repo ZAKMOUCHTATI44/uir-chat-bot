@@ -5,6 +5,8 @@ import { sendMessage } from "./sendMessage";
 import { handleAudio } from "./audio";
 import prisma from "../prisma/prisma";
 import { findResponse } from "./app";
+import * as similarity from "string-similarity"; // npm install string-similarity
+import { cosineSimilarity, getEmbedding } from "./embeddings";
 
 config();
 
@@ -41,24 +43,46 @@ const messageService = {
         orderBy: { createdAt: "desc" },
       });
     } catch (error) {
-      console.log("Failed to fetch recent messages");
+      console.log("Failed to fetch recent messages", error);
     }
   },
 };
 
-// Context Builder
-async function buildContext(from: string, currentMessage: string) {
-  try {
-    const latestMessages = await messageService.getRecentMessages(from);
-    const context =
-      latestMessages && latestMessages.map((item) => item.body).join(" ");
-    return `${context} ${currentMessage}`.trim();
-  } catch (error) {
-    return currentMessage; // Fallback to just the current message
-  }
+// Normalize message: lowercase + remove punctuation
+function normalize(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s]/gi, "")
+    .trim();
 }
 
-// Validation Middleware
+// Build contextual message if recent ones are similar
+async function buildContext(from: string, currentMessage: string) {
+  try {
+    const recentMessages = await messageService.getRecentMessages(from);
+    if (!recentMessages || recentMessages.length === 0) return currentMessage;
+
+    const currentEmbedding = await getEmbedding(currentMessage);
+    let similarMessages: string[] = [];
+
+    for (const msg of recentMessages) {
+      const embedding = await getEmbedding(msg.body);
+      const score = cosineSimilarity(currentEmbedding, embedding);
+      if (score > 0.85) {
+        similarMessages.push(msg.body);
+      }
+    }
+
+    if (similarMessages.length >= 2) {
+      return [...similarMessages, currentMessage].join(" ");
+    }
+
+    return currentMessage;
+  } catch (err) {
+    console.log("Context embedding failed", err);
+    return currentMessage;
+  }
+}
 
 // Routes
 app.post("/uir-chat-bot", async (req: Request, res: Response) => {
@@ -75,25 +99,27 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
         messageService.saveMessage(question, message.From, "audio"),
       ]);
 
-      // res.json({ success: true, message: "Audio response sent" });
+      res.json({ success: true, message: "Audio response sent" });
     }
 
-    // Handle text messages
     if (!message.Body) {
       res.status(400).json({ error: "Message body is required" });
     }
 
     const context = await buildContext(message.From, message.Body);
 
+
+    console.log(context)
     const [response] = await Promise.all([
-      findResponse(message.Body),
+      findResponse(context),
       messageService.saveMessage(message.Body, message.From, "text"),
     ]);
 
     await sendMessage(message.From, response);
     res.json({ success: true, message: "Text response sent" });
   } catch (error) {
-    res.json({ success: true, message: "Text response sent" });
+    console.error("Chatbot error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -110,9 +136,9 @@ app.get("/health", (req, res) => {
   res.status(200).json({ status: "healthy" });
 });
 
-// Server Startup
+// Start Server
 const port = process.env.PORT || 7001;
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-  console.log(`Environment: ${process.env.NODE_ENV || "development"}`);
+  console.log(`✅ Server running on port ${port}`);
+  console.log(`🌍 Environment: ${process.env.NODE_ENV || "development"}`);
 });

@@ -21,7 +21,7 @@ export const run = async () => {
   interface Faq {
     question: string;
     answer: string;
-    category: string;
+    category?: string;
     keywords?: string[];
   }
 
@@ -502,6 +502,83 @@ export const run = async () => {
         "Filières les plus internationalisées :\n\n1. **IPM** (Rabat Business School) : 100% en anglais\n2. **Ingénierie Aérospatiale** (double diplôme USA)\n3. **Communication** (mobilité obligatoire en Belgique)\n4. **Sciences Politiques** (52 universités partenaires)\n\nConseil : Privilégiez les programmes avec mobilité intégrée et renforcez vos langues (anglais + espagnol/allemand).",
       category: "Orientation",
       keywords: ["étranger", "international", "conseil"],
+    },
+    {
+      question:
+        "Quand a lieu le concours commun Médecine et Médecine Dentaire en 2026 ?",
+      answer:
+        "Aucune date spécifique n'est mentionnée pour le concours commun Médecine/Dentaire en 2026 dans le calendrier fourni.",
+    },
+    {
+      question:
+        "Quand sont les épreuves pour la Licence en Biotechnologie en 2026 ?",
+      answer:
+        "Les épreuves (écrit+oral) ont lieu les :<br>- 07 mai<br>- 24 juin<br>- 24 juillet<br>- 30 août.",
+    },
+    {
+      question: "Quand est le concours de Génie Biomédical en 2026 ?",
+      answer:
+        "Les dates sont :<br>- 14 mai<br>- 23 juin<br>- 14 juillet<br>- 17 juillet<br>- 27 août (tous en écrit+oral).",
+    },
+    // === SCIENCES DE LA SANTÉ ===
+    {
+      question:
+        "Quand a lieu le concours commun Médecine et Médecine Dentaire ?",
+      answer:
+        "Aucune date spécifique n'est mentionnée pour le concours commun Médecine/Dentaire dans le calendrier fourni.",
+    },
+    {
+      question: "Quand sont les épreuves pour la Licence en Biotechnologie ?",
+      answer:
+        "Les épreuves (écrit+oral) ont lieu les :<br>- 07 mai<br>- 24 juin<br>- 24 juillet<br>- 30 août.",
+    },
+    {
+      question: "Quand est le concours de Génie Biomédical ?",
+      answer:
+        "Les dates sont :<br>- 14 mai<br>- 23 juin<br>- 14 juillet<br>- 17 juillet<br>- 27 août (tous en écrit+oral).",
+    },
+
+    // === SCIENCES PARAMÉDICALES ===
+    {
+      question: "Quand ont lieu les concours pour Infirmier Polyvalent ?",
+      answer:
+        "Les dates sont :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre (tous en écrit+oral).",
+    },
+    {
+      question: "Quand est l'oral pour Technicien d’Imagerie Médicale ?",
+      answer:
+        "Les oraux (avec étude de dossier) ont lieu aux mêmes dates que les écrits :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre.",
+    },
+
+    // === RABAT BUSINESS SCHOOL ===
+    {
+      question: "Quand est l’écrit pour l’ITB à RBS ?",
+      answer:
+        "L’écrit pour l’ITB a lieu le **12 avril**, et l’oral le **19 avril**.",
+    },
+    {
+      question: "Quand sont les épreuves pour les masters RBS ?",
+      answer:
+        "Les masters RBS/PGE2 ont des épreuves (écrit+oral) le **17 mai**.",
+    },
+
+    // === SCIENCES PO/DROIT/ÉCONOMIE ===
+    {
+      question: "Quand sont les oraux de Psychologie ?",
+      answer:
+        "Tous les oraux ont lieu aux mêmes dates :<br>- 12 avril<br>- 10 mai<br>- 17 juin<br>- 18 juillet<br>- 03 septembre.",
+    },
+
+    // === INGÉNIERIE/ARCHITECTURE ===
+    {
+      question: "Quand a lieu le concours d’Architecture ?",
+      answer:
+        "Les dates sont :<br>- 04 mai<br>- 21 juin<br>- 15 juillet<br>- 28 août (tous en écrit+oral).",
+    },
+    {
+      question: "Quand est l’épreuve d’Ingénierie Aérospatiale ?",
+      answer:
+        "Les épreuves (écrit+oral) sont :<br>- 03 mai<br>- 22 juin<br>- 16 juillet<br>- 29 août.",
     },
   ];
   await vectorStore.addModels(
