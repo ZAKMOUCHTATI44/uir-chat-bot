@@ -57,37 +57,18 @@ const messageService = {
   },
 };
 
-// Build contextual message if recent ones are similar
 async function buildContext(from: string, currentMessage: string) {
   try {
     const recentMessages = await messageService.getRecentMessages(from);
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [
-        {
-          role: "system",
-          content:
-            "Tu es un assistant intelligent. Ta tâche est de lire l'historique récent d'une conversation (ci-dessous), de détecter le sujet central, et de reformuler une question claire, concise et structurée à partir du message le plus récent de l'utilisateur. Ne répète pas les messages. Concentre-toi sur le sens global et reformule une seule question utile.",
-        },
-        {
-          role: "user",
-          content: `
-            Contexte de la conversation :
-            ${recentMessages && recentMessages.map((msg) => `- ${msg.body}`).join("\n")}
-    
-            Dernier message :
-            ${currentMessage}
-    
-            Que demande clairement l'utilisateur ?
-          `,
-        },
-      ],
-      temperature: 0.3,
-      max_tokens: 80,
-    });
 
-    return response.choices[0]?.message?.content?.trim() || currentMessage;
+    const context =
+      Array.isArray(recentMessages) && recentMessages.length > 0
+        ? recentMessages.map((msg) => `- ${msg.body}`).join("\n")
+        : "";
+
+    return context || currentMessage;
   } catch (error) {
+    console.error("Erreur lors de la reformulation :", error);
     return currentMessage;
   }
 }
