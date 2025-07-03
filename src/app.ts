@@ -150,30 +150,14 @@ async function handleDateQuery(results: any[]): Promise<string | null> {
     })
   ).join('\n- ');
 
-  return `Voici les dates pertinentes, classées par ordre chronologique :\n\n- ${formattedDates}\n\nPour plus de détails sur une date spécifique, n'hésitez pas à me demander.`;
+  return `Voici les dates pertinentes, classées par ordre chronologique :\n\n- ${formattedDates}`;
 }
 
 /**
  * Generate fallback response when no results found
  */
 async function generateFallbackResponse(query: string): Promise<string> {
-  try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [{
-        role: "system",
-        content: `Vous êtes l'assistant de l'Université Internationale de Rabat. Répondez poliment que vous ne trouvez pas d'information précise sur "${query}" et proposez des alternatives.`
-      }],
-      temperature: 0.5,
-      max_tokens: 150
-    });
-
-    return response.choices[0]?.message?.content?.trim() || 
-      `Je n'ai pas trouvé d'information précise sur "${query}". Vous pouvez visiter notre site web www.uir.ac.ma ou contacter l'accueil au +212 5 30 10 30 00.`;
-  } catch (error) {
-    console.error("Fallback response generation failed:", error);
-    return "Désolé, je n'ai pas pu traiter votre demande. Pourriez-vous reformuler votre question ?";
-  }
+  return `Je n'ai pas d'information précise à propos de "${query}" dans ma base de données. Vous pouvez contacter l'accueil au +212 5 30 10 30 00 pour plus d'aide.`;
 }
 
 /**
@@ -215,46 +199,40 @@ export const findResponse = async (userInput: string, userId?: string): Promise<
     const faqs = results
       .map(
         (result, index) =>
-          `[Question similaire ${index + 1}]: ${result.metadata.question}\n` +
-          `[Réponse associée]: ${result.metadata.answer}`
+          `Question ${index + 1}: ${result.metadata.question}\n` +
+          `Réponse: ${result.metadata.answer}`
       )
       .join("\n\n");
 
-    // Generate response using LLM
-    const prompt = `
-Vous êtes l'assistant virtuel de l'Université Internationale de Rabat. Votre personnalité est:
-- Amical(e) et professionnel(le)
-- Naturel(le) dans vos réponses
-- Serviable et précis(e)
-- Utilise un langage courant mais respectueux
+    // Generate response using LLM with strict instructions
+    const prompt = `Vous êtes l'assistant de l'Université Internationale de Rabat. 
+Voici les informations disponibles qui pourraient répondre à la question:
 
-Contexte disponible:
 ${faqs}
 
-Guide de réponse:
-1. Répondez comme un humain, pas comme un robot
-2. Soyez concis mais complet
-3. Si vous n'êtes pas sûr, proposez des alternatives
-4. Utilisez des formulations naturelles comme "Je vous conseille..." ou "Pour cela, vous pouvez..."
-5. Pour les dates, présentez-les toujours dans l'ordre chronologique avec le format: "Lundi 15 janvier 2024"
+Instructions strictes:
+1. Répondez UNIQUEMENT en utilisant les informations fournies ci-dessus
+2. Ne faites pas de suppositions ou d'extrapolations
+3. Si la réponse n'est pas dans les informations fournies, dites simplement que vous ne savez pas
+4. Gardez les réponses concises et factuelles
+5. Ne mentionnez pas l'existence de ce système de FAQ dans votre réponse
 
 Question: "${userInput}"
 
-Répondez maintenant comme si vous parliez à un étudiant ou visiteur devant vous, de manière naturelle et utile:`;
+Réponse (basée uniquement sur les informations fournies):`;
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4",
       messages: [{ role: "user", content: prompt }],
-      temperature: 0.6,
-      max_tokens: 250,
+      temperature: 0.3,
+      max_tokens: 200,
     });
 
     const answer = completion.choices[0].message?.content?.trim();
 
     return (
       answer ||
-      "Je n'ai pas assez d'informations pour répondre précisément à votre question. " +
-        "Vous pouvez visiter notre site web www.uir.ac.ma ou contacter l'accueil au +212 5 30 10 30 00 pour plus d'aide."
+      "Je n'ai pas d'information précise à ce sujet dans ma base de données. Vous pouvez contacter l'accueil au +212 5 30 10 30 00 pour plus d'aide."
     );
   } catch (error) {
     console.error("Erreur:", error);
