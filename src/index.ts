@@ -5,13 +5,22 @@ import { sendMessage } from "./sendMessage";
 import { handleAudio } from "./audio";
 import prisma from "../prisma/prisma";
 import { findResponse } from "./app";
-import * as similarity from "string-similarity"; // npm install string-similarity
 import { cosineSimilarity, getEmbedding } from "./embeddings";
+import { OpenAI } from "openai";
 
 config();
-
 // Initialize Express app
 const app = express();
+
+// Validate environment variables
+if (!process.env.OPENAI_API_KEY) {
+  throw new Error("Missing OPENAI_API_KEY in environment variables");
+}
+
+// Initialize services with configuration
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 // Body Parsing
 app.use(bodyParser.json({ limit: "10kb" }));
@@ -48,38 +57,29 @@ const messageService = {
   },
 };
 
-// Normalize message: lowercase + remove punctuation
-function normalize(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s]/gi, "")
-    .trim();
-}
-
 // Build contextual message if recent ones are similar
 async function buildContext(from: string, currentMessage: string) {
   try {
     const recentMessages = await messageService.getRecentMessages(from);
-    if (!recentMessages || recentMessages.length === 0) return currentMessage;
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are a helpful assistant that summarizes the conversation context and reformulates a clean, simple, and structured question based on recent user inputs.",
+        },
+        {
+          role: "user",
+          content: `${JSON.stringify(recentMessages)}`,
+        },
+      ],
+      temperature: 0.3,
+      max_tokens: 50,
+    });
 
-    const currentEmbedding = await getEmbedding(currentMessage);
-    let similarMessages: string[] = [];
-
-    for (const msg of recentMessages) {
-      const embedding = await getEmbedding(msg.body);
-      const score = cosineSimilarity(currentEmbedding, embedding);
-      if (score > 0.85) {
-        similarMessages.push(msg.body);
-      }
-    }
-
-    if (similarMessages.length >= 2) {
-      return [...similarMessages, currentMessage].join(" ");
-    }
-
-    return currentMessage;
-  } catch (err) {
-    console.log("Context embedding failed", err);
+    return response.choices[0]?.message?.content?.trim() || currentMessage;
+  } catch (error) {
     return currentMessage;
   }
 }
@@ -108,8 +108,9 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
 
     const context = await buildContext(message.From, message.Body);
 
-
-    console.log(context)
+    console.log("********************")
+    console.log(context);
+    console.log("********************")
     const [response] = await Promise.all([
       findResponse(context),
       messageService.saveMessage(message.Body, message.From, "text"),
