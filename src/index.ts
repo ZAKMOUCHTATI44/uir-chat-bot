@@ -67,15 +67,23 @@ async function buildContext(from: string, currentMessage: string) {
         {
           role: "system",
           content:
-            " Vous êtes un assistant utile qui résume le contexte de la conversation et reformule une question claire, simple et structurée à partir des dernières entrées de l'utilisateur.",
+            "Tu es un assistant intelligent. Ta tâche est de lire l'historique récent d'une conversation (ci-dessous), de détecter le sujet central, et de reformuler une question claire, concise et structurée à partir du message le plus récent de l'utilisateur. Ne répète pas les messages. Concentre-toi sur le sens global et reformule une seule question utile.",
         },
         {
           role: "user",
-          content: `${JSON.stringify([recentMessages?.map(item => item.body) , currentMessage].join(","))}`,
+          content: `
+            Contexte de la conversation :
+            ${recentMessages && recentMessages.map((msg) => `- ${msg.body}`).join("\n")}
+    
+            Dernier message :
+            ${currentMessage}
+    
+            Que demande clairement l'utilisateur ?
+          `,
         },
       ],
       temperature: 0.3,
-      max_tokens: 50,
+      max_tokens: 80,
     });
 
     return response.choices[0]?.message?.content?.trim() || currentMessage;
