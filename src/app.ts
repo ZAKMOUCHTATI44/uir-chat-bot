@@ -15,7 +15,6 @@ if (!process.env.OPENAI_API_KEY) {
 // Initialize services with configuration
 const openai = new OpenAI({ 
   apiKey: process.env.OPENAI_API_KEY,
-  timeout: 10000 // 10 seconds timeout
 });
 
 const db = new PrismaClient({
