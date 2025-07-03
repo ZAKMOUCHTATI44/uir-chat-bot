@@ -57,21 +57,21 @@ const messageService = {
   },
 };
 
-async function buildContext(from: string, currentMessage: string) {
-  try {
-    const recentMessages = await messageService.getRecentMessages(from);
+// async function buildContext(from: string, currentMessage: string) {
+//   try {
+//     const recentMessages = await messageService.getRecentMessages(from);
 
-    const context =
-      Array.isArray(recentMessages) && recentMessages.length > 0
-        ? recentMessages.map((msg) => `- ${msg.body}`).join("\n")
-        : "";
+//     const context =
+//       Array.isArray(recentMessages) && recentMessages.length > 0
+//         ? recentMessages.map((msg) => `- ${msg.body}`).join("\n")
+//         : "";
 
-    return context || currentMessage;
-  } catch (error) {
-    console.error("Erreur lors de la reformulation :", error);
-    return currentMessage;
-  }
-}
+//     return context || currentMessage;
+//   } catch (error) {
+//     console.error("Erreur lors de la reformulation :", error);
+//     return currentMessage;
+//   }
+// }
 
 // Routes
 app.post("/uir-chat-bot", async (req: Request, res: Response) => {
@@ -95,13 +95,13 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
       res.status(400).json({ error: "Message body is required" });
     }
 
-    const context = await buildContext(message.From, message.Body);
+    // const context = await buildContext(message.From, message.Body);
 
-    console.log("********************");
-    console.log(context);
-    console.log("********************");
+    // console.log("********************");
+    // console.log(context);
+    // console.log("********************");
     const [response] = await Promise.all([
-      findResponse(context),
+      findResponse(message.Body),
       messageService.saveMessage(message.Body, message.From, "text"),
     ]);
 

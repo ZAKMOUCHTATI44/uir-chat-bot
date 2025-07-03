@@ -192,25 +192,20 @@ export const findResponse = async (userInput: string, userId?: string): Promise<
 
   try {
     const vectorStore = createVectorStore();
-    
     // Enhanced query understanding with expansion
     const expandedQuery = await expandQuery(userInput);
     const searchQuery = `${userInput} ${expandedQuery}`.trim();
-    
     // Perform similarity search
     const results = await vectorStore.similaritySearch(searchQuery, 3);
-
     // Special handling for date queries
     if (isDateRelatedQuery(userInput)) {
       const dateResponse = await handleDateQuery(results);
       if (dateResponse) return dateResponse;
     }
-
     // Fallback if no results found
     if (results.length === 0) {
       return await generateFallbackResponse(userInput);
     }
-
     // Prepare context from results
     const faqs = results
       .map(
