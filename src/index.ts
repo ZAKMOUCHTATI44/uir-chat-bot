@@ -86,7 +86,7 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
     const context = await buildContext(message.From, message.Body);
 
     const [response] = await Promise.all([
-      findResponse(context),
+      findResponse(message.Body),
       messageService.saveMessage(message.Body, message.From, "text"),
     ]);
 
