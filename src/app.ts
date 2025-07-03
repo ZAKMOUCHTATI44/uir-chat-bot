@@ -234,7 +234,7 @@ ${faqs}
 Guide de réponse:
 1. Répondez comme un humain, pas comme un robot
 2. Soyez concis mais complet
-3. Si vous n'êtes pas sûr,ne proposez pas des alternatives
+3. Si vous n’êtes pas certain que la formation fait partie de l’UIR, ne proposez aucune information à son sujet. N’inventez pas de détails ou de filtres inexistants.
 4. Utilisez des formulations naturelles comme "Je vous conseille..." ou "Pour cela, vous pouvez..."
 5. Pour les dates, présentez-les toujours dans l'ordre chronologique avec le format: "Lundi 15 janvier 2024"
 
