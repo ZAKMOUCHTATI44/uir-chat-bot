@@ -21,6 +21,8 @@ export const run = async () => {
   interface Faq {
     question: string;
     answer: string;
+    category: string;
+    keywords?: string[];
   }
 
   const faqs: Faq[] = [
@@ -28,648 +30,480 @@ export const run = async () => {
       question: "L'UIR est-elle reconnue par l'État marocain ?",
       answer:
         "Oui, l’Université Internationale de Rabat (UIR) est reconnue par l’État marocain depuis 2015, avec un renouvellement en 2020. Cette reconnaissance garantit que ses diplômes sont équivalents à ceux délivrés par les universités publiques marocaines.",
+      category: "Reconnaissance et statut",
     },
     {
       question:
         "Les diplômes de l'UIR sont-ils équivalents aux diplômes nationaux ?",
       answer:
         "Oui. Les diplômes de l’UIR sont équivalents aux diplômes nationaux, car l’université est reconnue par l’État marocain depuis 2015, avec un renouvellement en 2020.",
+      category: "Reconnaissance et statut",
     },
     {
       question: "Quel est le statut juridique de l'UIR ?",
       answer:
         "L’Université Internationale de Rabat (UIR) est une université privée à but non lucratif, créée dans le cadre d’un partenariat public-privé avec l’État marocain.",
+      category: "Reconnaissance et statut",
     },
     {
       question: "Rabat Business School est-elle accréditée par l'AACSB ?",
       answer:
         "Oui. Rabat Business School est accréditée AACSB, un label d’excellence détenu par moins de 5 % des business schools dans le monde.",
+      category: "Accréditations et labels",
     },
     {
       question:
         "L'UIR dispose-t-elle du label EUR-ACE pour ses formations en ingénierie ?",
       answer:
         "Oui. Les écoles d’ingénieurs de l’UIR sont labellisées EUR-ACE et accréditées par la CTI, ce qui garantit la qualité européenne des formations en ingénierie.",
+      category: "Accréditations et labels",
     },
     {
       question:
         "Quels sont les partenaires académiques internationaux de l'UIR ?",
       answer:
         "L’UIR compte 262 partenariats académiques dans 57 pays. Ces accords permettent des échanges, doubles diplômes, programmes conjoints et mobilité étudiante, notamment en Europe, Amérique et Asie.",
+      category: "Partenariats et international",
     },
     {
       question: "L'UIR propose-t-elle des doubles diplômes ?",
       answer:
         "Oui. L’UIR propose plusieurs doubles diplômes en partenariat avec des universités internationales, notamment en Europe, en Amérique du Nord et en Asie. Ces accords concernent plusieurs collèges, dont Rabat Business School et les écoles d’ingénieurs.",
+      category: "Partenariats et international",
     },
     {
       question: "Quelle est la superficie du campus de l'UIR ?",
       answer: "Le campus de l’UIR s’étend sur 30 hectares.",
+      category: "Campus et infrastructures",
     },
     {
       question: "Quelles infrastructures sont disponibles sur le campus ?",
       answer:
         "Le campus de l’UIR dispose de : 🏡 résidences, 📚 bibliothèque, 🍽️ restauration, 🏊‍♂️ piscine, ⚽ terrains de sport, 🧪 laboratoires, 💡 Tech Center, 🏥 hôpital universitaire, 🌱 campus HQE.",
+      category: "Campus et infrastructures",
     },
     {
       question: "Combien de brevets ont été déposés par l'UIR ?",
       answer:
         "L’UIR a déposé 650 brevets, dont 108 à l’international, ce qui en fait la 1ère université en Afrique et dans la région MENA en matière de brevets (source : OMPIC).",
+      category: "Recherche et innovation",
     },
     {
       question:
         "Combien de chercheurs de l'UIR figurent parmi les 2 % des meilleurs mondiaux ?",
       answer:
         "6 chercheurs de l’UIR figurent parmi les 2 % des meilleurs scientifiques au monde, selon le classement de l’Université Stanford.",
+      category: "Recherche et innovation",
     },
     {
       question: "L'UIR possède-t-elle un hôpital universitaire ?",
       answer:
         "Oui. L’UIR dispose d’un Hôpital Universitaire International en cours de finalisation, avec une ouverture prévue en 2025. Il comptera 450 lits et proposera des soins dans 15 spécialités médicales et chirurgicales.",
+      category: "Campus et infrastructures",
     },
     {
       question: "Le campus de l'UIR est-il certifié HQE ?",
       answer:
         "Oui. Le campus de l’UIR est certifié HQE (Haute Qualité Environnementale) — c’est le premier campus en Afrique à avoir obtenu cette distinction.",
+      category: "Campus et infrastructures",
     },
     {
       question: "L'UIR dispose-t-elle d'une centrale photovoltaïque ?",
       answer:
-        "Oui. L’UIR dispose d’une centrale photovoltaïque sur son campus, avec une capacité de production annuelle de 470 MWh. Elle fait partie des équipements durables du campus",
+        "Oui. L’UIR dispose d’une centrale photovoltaïque sur son campus, avec une capacité de production annuelle de 470 MWh. Elle fait partie des équipements durables du campus.",
+      category: "Campus et infrastructures",
     },
     {
       question: "Comment contacter l'UIR pour des informations générales ?",
-      answer: "",
+      answer:
+        "Pour des informations générales, vous pouvez contacter l'UIR par téléphone au +212 (0)5 30 10 40 63 ou par email à concours@uir.ac.ma.",
+      category: "Contact et informations",
     },
     {
       question:
         "Quels dossiers seront pris en compte pour l'obtention d'une bourse à l'UIR ?",
       answer:
         "Seuls les dossiers de bourse déposés en ligne seront traités par nos services. Les dossiers incomplets ou déposés hors-délais seront systématiquement rejetés.",
-    },
-    {
-      question:
-        "Quels dossiers seront pris en compte pour l'obtention d'une bourse à l'UIR ?",
-      answer:
-        "Seuls les dossiers de bourse déposés en ligne seront traités par nos services. Les dossiers incomplets ou déposés hors-délais seront systématiquement rejetés.",
+      category: "Bourses et aides financières",
     },
     {
       question:
         "Est-ce que les étudiants ayant déjà bénéficié d'une bourse peuvent faire un recours ?",
       answer:
         "Non, les étudiants ayant déjà bénéficié d'une bourse et qui font un recours ne peuvent, en aucun cas, redéposer leurs demandes en ligne.",
+      category: "Bourses et aides financières",
     },
     {
       question: "Est-ce que la bourse est reconduite en cas de redoublement ?",
       answer:
         "Non, la bourse octroyée par l'UIR n'est pas reconduite en cas de redoublement.",
+      category: "Bourses et aides financières",
     },
     {
       question: "Quels frais sont couverts par la bourse de l'UIR ?",
       answer:
         "La bourse octroyée par l'UIR couvre exclusivement les frais de scolarité à l'UIR, que ce soit partiellement ou totalement. Elle ne couvre pas les frais de scolarité qui sont dus chez les partenaires académiques de l'UIR, par exemple, dans le cas de cursus en double diplomation.",
+      category: "Bourses et aides financières",
     },
     {
       question: "Quelles sont les bourses d'études proposées par l'UIR ?",
       answer:
         "L'UIR propose des bourses d'études partielles ou totales réservées aux meilleurs étudiants qui se trouvent dans l'incapacité de payer les frais de scolarité.",
+      category: "Bourses et aides financières",
     },
     {
       question: "Qu'est-ce que la bourse d'études couvre-t-elle ?",
-      answer: `La bourse d'études correspond à une réduction partielle ou à une exonération totale des frais de scolarité, et éventuellement des frais de logement. Elle est destinée aux étudiants issus de milieux défavorisés ou modestes. Les détails sur les modalités de la bourse sont décrits dans le "Règlement pour l'octroi d'une bourse d'études".`,
+      answer:
+        "La bourse d'études correspond à une réduction partielle ou à une exonération totale des frais de scolarité, et éventuellement des frais de logement. Elle est destinée aux étudiants issus de milieux défavorisés ou modestes. Les détails sur les modalités de la bourse sont décrits dans le \"Règlement pour l'octroi d'une bourse d'études\".",
+      category: "Bourses et aides financières",
     },
     {
       question:
         "Quels documents sont nécessaires pour constituer le dossier de bourse ?",
-      answer: `Le dossier de bourse comprend le formulaire de bourse à renseigner en ligne, ainsi que d'autres pièces demandées. Vous devez le déposer en ligne à partir de "bourse.uir.ac.ma" en utilisant votre adresse e-mail UIR et votre mot de passe. Ce dossier permettra à l'UIR de prendre connaissance de votre situation financière et familiale actuelle. Assurez-vous de fournir toutes les pièces demandées pour permettre à la commission d'évaluer votre dossier de manière appropriée. Soyez assuré que toutes les informations transmises à la commission sont confidentielles.`,
+      answer:
+        "Le dossier de bourse comprend le formulaire de bourse à renseigner en ligne, ainsi que d'autres pièces demandées. Vous devez le déposer en ligne à partir de \"bourse.uir.ac.ma\" en utilisant votre adresse e-mail UIR et votre mot de passe. Ce dossier permettra à l'UIR de prendre connaissance de votre situation financière et familiale actuelle. Assurez-vous de fournir toutes les pièces demandées pour permettre à la commission d'évaluer votre dossier de manière appropriée. Soyez assuré que toutes les informations transmises à la commission sont confidentielles.",
+      category: "Bourses et aides financières",
     },
     {
       question: "Quels types de bourses propose l’UIR ?",
       answer:
-        "L’UIR propose 3 types de bourses selon les profils : Bourse sociale Bourse sportive Bourse sociale  Bourse spéciale",
+        "L’UIR propose 3 types de bourses selon les profils : Bourse sociale, Bourse sportive, Bourse spéciale.",
+      category: "Bourses et aides financières",
     },
     {
       question: "Qu’est-ce qu’une bourse sociale ?",
       answer:
         "La bourse sociale est destinée aux étudiants dont la situation financière nécessite un soutien. Elle est attribuée sur critères sociaux après étude de dossier.",
+      category: "Bourses et aides financières",
     },
     {
       question: "Qu’est-ce qu’une bourse sportive ?",
       answer:
         "La bourse sportive est accordée aux étudiants ayant un excellent niveau sportif, reconnu par un palmarès ou une participation à des compétitions officielles.",
+      category: "Bourses et aides financières",
     },
     {
       question: "Qu’est-ce qu’une bourse spéciale ?",
       answer:
         "La bourse spéciale est octroyée dans le cadre de partenariats spécifiques ou selon certains critères prédéfinis (institutionnels, associatifs, etc.).",
+      category: "Bourses et aides financières",
     },
     {
       question: "Peut-on cumuler plusieurs bourses ?",
       answer:
         "Non, il n’est pas possible de cumuler plusieurs bourses à l’UIR. Une seule bourse peut être attribuée par étudiant, selon le type de dossier.",
+      category: "Bourses et aides financières",
     },
     {
       question: "Où déposer ma demande de bourse ?",
       answer:
         "Rendez-vous sur bourse.uir.ac.ma pour remplir le formulaire et soumettre les documents demandés.",
-    },
-    {
-      question: "Où déposer ma demande de bourse ?",
-      answer:
-        "Rendez-vous sur bourse.uir.ac.ma pour remplir le formulaire et soumettre les documents demandés.",
+      category: "Bourses et aides financières",
     },
     {
       question: "Est-ce que l’UIR est une université publique ?",
       answer:
-        "L’Université Internationale de Rabat est une université semi-publique. Elle est la première université marocaine créée en partenariat avec l’Etat marocain concrétisant ainsi le premier partenariat public-privé dans le secteur de l’enseignement supérieur.",
+        "L’Université Internationale de Rabat est une université semi-publique. Elle est la première université marocaine créée en partenariat avec l’Etat marocain concrétisant ainsi le premier partenariat public-privé dans le secteur de l’enseignement supérieur.",
+      category: "Reconnaissance et statut",
     },
     {
       question: "L’UIR est-elle reconnue par l’état ?",
       answer:
-        "L’Université Internationale de Rabat est reconnue par l’Etat. La reconnaissance signifie que les diplômes délivrés par l’UIR sont équivalents aux diplômes délivrés par les établissements publics, permettant ainsi d’accéder à la fonction publique, aux concours d’Etat et aux centres doctoraux.",
+        "L’Université Internationale de Rabat est reconnue par l’Etat. La reconnaissance signifie que les diplômes délivrés par l’UIR sont équivalents aux diplômes délivrés par les établissements publics, permettant ainsi d’accéder à la fonction publique, aux concours d’Etat et aux centres doctoraux.",
+      category: "Reconnaissance et statut",
     },
     {
       question: "Quels sont les établissements ou les écoles de l’UIR ?",
-      answer: `L’Université Internationale de Rabat est constituée de 4 collèges distincts, chaque collège englobe à son tour plusieurs écoles/facultés :
-  Collège of  Social Sciences
-  Sciences Po
-  Ecole de droit de Rabat
-  IHECS Afrique communication et Médias
-  Collège of Engineering & Architecture
-  Ecole Supérieure d’Ingénierie de l’Energie
-  School of Aerospace Engineering & Automotive Engineering
-  Ecole Supérieure d’Informatique et du Numérique
-  Ecole d'Ingénierie en Topographie de Rabat
-  Ecole d’Architecture de Rabat
-  Collège of Health Sciences
-  Faculté Internationale de Médecine Dentaire
-  Faculté Internationale de Médecine de Rabat
-  Ecole Supérieure des Sciences Paramédicales de Rabat
-  Collège of Management
-  Rabat Business School `,
+      answer:
+        "L’Université Internationale de Rabat est constituée de 4 collèges distincts, chaque collège englobe à son tour plusieurs écoles/facultés :\n- Collège of Social Sciences : Sciences Po, Ecole de droit de Rabat, IHECS Afrique communication et Médias\n- Collège of Engineering & Architecture : Ecole Supérieure d’Ingénierie de l’Energie, School of Aerospace Engineering & Automotive Engineering, Ecole Supérieure d’Informatique et du Numérique, Ecole d'Ingénierie en Topographie de Rabat, Ecole d’Architecture de Rabat\n- Collège of Health Sciences : Faculté Internationale de Médecine Dentaire, Faculté Internationale de Médecine de Rabat, Ecole Supérieure des Sciences Paramédicales de Rabat\n- Collège of Management : Rabat Business School",
+      category: "Formations et établissements",
     },
     {
       question: "Pourquoi s’inscrire à l’UIR ?",
-      answer: `L’Université Internationale de Rabat est la première université créée dans le cadre d’un partenariat public-privé au Maroc, elle propose une offre de formation pluridisciplinaire élargie avec différentes filières dans des domaines de pointe (ingénierie, sciences politiques, communication, média, architecture, médecine dentaire, management)   
-  L’UIR est dotée d’un campus moderne sur 300 000 m2 (30 hectares) permettant aux étudiants de vivre une expérience unique, épanouie et riche. `,
+      answer:
+        "L’Université Internationale de Rabat est la première université créée dans le cadre d’un partenariat public-privé au Maroc, elle propose une offre de formation pluridisciplinaire élargie avec différentes filières dans des domaines de pointe (ingénierie, sciences politiques, communication, média, architecture, médecine dentaire, management). L’UIR est dotée d’un campus moderne sur 300 000 m2 (30 hectares) permettant aux étudiants de vivre une expérience unique, épanouie et riche.",
+      category: "Général",
     },
     {
       question:
         "Comment puis-je choisir pour quel établissement de l’UIR candidater ?",
       answer:
-        "Le choix de l’établissement revient à faire un choix par rapport au métier que tu souhaites exercer dans le futur. Le département promotion de l’UIR se charge de t’orienter et répondre à toutes tes questions.",
+        "Le choix de l’établissement revient à faire un choix par rapport au métier que tu souhaites exercer dans le futur. Le département promotion de l’UIR se charge de t’orienter et répondre à toutes tes questions.",
+      category: "Admissions et inscriptions",
     },
     {
       question:
         "Y-a-t-il un processus d’accompagnement lors de la première année à l’UIR ?",
-      answer: `A chaque rentrée universitaire, l’Université Internationale de Rabat accorde une grande importance à l’intégration de ses nouveaux étudiants, elle organise ainsi une semaine d’intégration pour les accueillir dans cette nouvelle aventure. En plus de la semaine d’intégration, différentes activités sont mises en place en coordination avec le BDE (Bureau Des Etudiants) afin de faire découvrir aux nouveaux le campus, les anciens étudiants ainsi que pour se familiariser avec le staff administratif et professeurs.
-      
-  Après cette semaine, l’UIR accompagne activement ses étudiants tout au long de leur cursus universitaire, le corps professoral et administratif sont tous impliqués que ça soit dans le cadre des études et échanges à l’international, ou via une cellule d’écoute, un service pour l’assistance lors de la recherche de stage et un département spécial pour la vie estudiantine et associative des étudiants.`,
+      answer:
+        "A chaque rentrée universitaire, l’Université Internationale de Rabat accorde une grande importance à l’intégration de ses nouveaux étudiants, elle organise ainsi une semaine d’intégration pour les accueillir dans cette nouvelle aventure. En plus de la semaine d’intégration, différentes activités sont mises en place en coordination avec le BDE (Bureau Des Etudiants) afin de faire découvrir aux nouveaux le campus, les anciens étudiants ainsi que pour se familiariser avec le staff administratif et professeurs. Après cette semaine, l’UIR accompagne activement ses étudiants tout au long de leur cursus universitaire, le corps professoral et administratif sont tous impliqués que ça soit dans le cadre des études et échanges à l’international, ou via une cellule d’écoute, un service pour l’assistance lors de la recherche de stage et un département spécial pour la vie estudiantine et associative des étudiants.",
+      category: "Vie étudiante",
     },
     {
       question:
         "Existe-t-il un service d’orientation et accompagnement pour les bacheliers ?",
       answer:
-        "L’UIR est dotée d’un département promotion qui se charge d’orienter les étudiants et de répondre à leurs interrogations.",
+        "L’UIR est dotée d’un département promotion qui se charge d’orienter les étudiants et de répondre à leurs interrogations.",
+      category: "Admissions et inscriptions",
     },
     {
       question: "Existe-t-il des programmes en anglais ?",
-      answer: `Oui, l’Université Internationale de Rabat propose des programmes en anglais tels que dans l’école de management « Rabat Business School », l'école d’ingénierie automobile et aéronautique.
-      
-  Dans les autres programmes, l’anglais est une langue qui occupe tout aussi bien une grande importance, elle y est enseignée tout au long du parcours universitaire.    `,
+      answer:
+        "Oui, l’Université Internationale de Rabat propose des programmes en anglais tels que dans l’école de management « Rabat Business School », l'école d’ingénierie automobile et aéronautique. Dans les autres programmes, l’anglais est une langue qui occupe tout aussi bien une grande importance, elle y est enseignée tout au long du parcours universitaire.",
+      category: "Formations et établissements",
     },
     {
       question:
         "Puis-je changer de programme de formation au cours d’une année universitaire ?",
       answer:
-        "Non, il est impossible de changer de programme de formation au cours d’une année universitaire, il faut attendre la fin de l’année universitaire pour le faire.",
+        "Non, il est impossible de changer de programme de formation au cours d’une année universitaire, il faut attendre la fin de l’année universitaire pour le faire.",
+      category: "Formations et établissements",
     },
     {
       question:
         "Quelle est la différence entre la formation initiale et la formation continue ?",
       answer:
-        "La formation initiale est un type de formation destinée aux étudiants principalement, à l’inverse de la formation continue qui s’adresse aux professionnels (salariés, entrepreneurs, fonctionnaires) ou aux personnes dotées d’une expérience professionnelle et qui envisagent de se former pour diverses raisons (obtenir un diplôme de niveau supérieur, se reconvertir, changer de spécialisation…)",
+        "La formation initiale est un type de formation destinée aux étudiants principalement, à l’inverse de la formation continue qui s’adresse aux professionnels (salariés, entrepreneurs, fonctionnaires) ou aux personnes dotées d’une expérience professionnelle et qui envisagent de se former pour diverses raisons (obtenir un diplôme de niveau supérieur, se reconvertir, changer de spécialisation…).",
+      category: "Formations et établissements",
     },
     {
       question: "Que comprennent les frais de scolarité à l’UIR ?",
-      answer: `Les frais de scolarité couvrent :
-  L’enseignement académique de haut niveau
-  L’accès aux infrastructures sportives
-  Les cours de langues optionnels
-  Les frais ne couvrent pas : transport, restauration, hébergement ou dépenses personnelles.`,
+      answer:
+        "Les frais de scolarité couvrent :\n- L’enseignement académique de haut niveau\n- L’accès aux infrastructures sportives\n- Les cours de langues optionnels\nLes frais ne couvrent pas : transport, restauration, hébergement ou dépenses personnelles.",
+      category: "Frais et financement",
     },
     {
       question: "Quel est le montant des frais d’inscription à l’UIR ?",
-      answer: `Les frais d’inscription varient selon les collèges :
-  10 000 DHS pour la majorité des formations
-  20 000 DHS pour le programme ITB (Collège de Management)
-  📌 Ces frais sont non remboursables.`,
+      answer:
+        "Les frais d’inscription varient selon les collèges :\n- 10 000 DHS pour la majorité des formations\n- 20 000 DHS pour le programme ITB (Collège de Management)\n📌 Ces frais sont non remboursables.",
+      category: "Frais et financement",
     },
     {
       question: "Quels sont les frais de scolarité pour un bachelier ?",
-      answer: `Cela dépend du programme choisi. Voici quelques exemples :
-  Médecine : 120 000 DHS/an
-  Architecture : 85 000 DHS/an
-  Droit, Économie, Sciences Politiques… : 62 000 DHS/an
-   Les frais sont annuels, à régler à l’inscription.`,
+      answer:
+        "Cela dépend du programme choisi. Voici quelques exemples :\n- Médecine : 120 000 DHS/an\n- Architecture : 85 000 DHS/an\n- Droit, Économie, Sciences Politiques… : 62 000 DHS/an\nLes frais sont annuels, à régler à l’inscription.",
+      category: "Frais et financement",
     },
     {
       question: "Comment puis-je payer mes frais de scolarité ?",
-      answer: `Trois options sont disponibles :
-  Paiement en ligne par carte bancaire via le site web
-  Virement ou versement bancaire auprès d’une agence CIH Bank
-  Paiement par chèque bancaire`,
+      answer:
+        "Trois options sont disponibles :\n- Paiement en ligne par carte bancaire via le site web\n- Virement ou versement bancaire auprès d’une agence CIH Bank\n- Paiement par chèque bancaire",
+      category: "Frais et financement",
     },
     {
       question: "Quelles sont les coordonnées bancaires de l’UIR ?",
-      answer: `Pour les étudiants marocains :
-  RIB : CIH BANK 230 810 594 293 822 101 460 075
-  Swift : CIHMMAMC
-  Bénéficiaire : Université Internationale de Rabat
-  
-  📌 Pour les étudiants internationaux :
-  IBAN : CIH BANK MA64230810594293822103320341
-  Swift : CIHMMAMC
-  Bénéficiaire : Université Internationale de Rabat`,
+      answer:
+        "Pour les étudiants marocains :\nRIB : CIH BANK 230 810 594 293 822 101 460 075\nSwift : CIHMMAMC\nBénéficiaire : Université Internationale de Rabat\n\n📌 Pour les étudiants internationaux :\nIBAN : CIH BANK MA64230810594293822103320341\nSwift : CIHMMAMC\nBénéficiaire : Université Internationale de Rabat",
+      category: "Frais et financement",
     },
     {
       question:
-        "Quels sont les premiers pas pour soumettre une candidature à l’UIR après le bac ?",
+        "Quelles sont les spécialisations offertes par l'École Supérieure d'Informatique et du Numérique (ESIN)?",
       answer:
-        "1. Créer un compte candidat sur : https://candidature.uir.ac.ma\n2. Renseigner vos informations personnelles et académiques\n3. Sélectionner la ou les filières de votre choix\n4. Régler les frais de concours : 750 Dhs pour 2 concours, 1500 Dhs pour plus de 2",
+        "L'ESIN propose 4 spécialisations: Cloud Computing & Virtualization, Cybersécurité, Big Data & Intelligence Artificielle, et Génie Logiciel. Ces spécialisations sont accessibles à partir de la 3ème année du cycle ingénieur.",
+      category: "Programmes académiques",
     },
     {
       question:
-        "Je souhaite intégrer un master à l’UIR, comment dois-je procéder ?",
+        "Comment se déroule le double diplôme en Ingénierie Aérospatiale/Automobile?",
       answer:
-        "1. Créer un compte candidat sur : https://candidature.uir.ac.ma/fr/register-superieur\n2. Renseigner vos informations personnelles et académiques\n3. Sélectionner la ou les filières de votre choix",
+        "Le double diplôme se fait en partenariat avec Mississippi State University (MSU) et Georgia Institute of Technology (GIT). Les étudiants peuvent passer leur 5ème année dans ces universités pour obtenir un Master of Science en plus de leur diplôme d'ingénieur de l'UIR.",
+      category: "Programmes académiques",
     },
     {
       question:
-        "Comment effectuer le paiement des frais pour les concours de l’UIR ?",
+        "Quels sont les critères de sélection pour intégrer la filière Architecture?",
       answer:
-        "Les frais peuvent être réglés par carte bancaire sur le site, ou par virement bancaire auprès d’une banque CIH. Une fois le virement effectué, scanner le justificatif avec nom/prénom et l’envoyer à comptable@uir.ac.ma",
+        "Les candidats doivent avoir un baccalauréat scientifique, économique ou en arts appliqués. Le concours comprend une épreuve de dessin libre, un dessin de reproduction, une dissertation en français et un entretien oral.",
+      category: "Admissions",
     },
     {
       question:
-        "Est-il possible de rencontrer un conseiller pour discuter de mon projet d'études ?",
+        "Quels sont les frais de scolarité pour le programme International Program in Management (IPM)?",
       answer:
-        "Utilisez le lien suivant pour prendre rendez-vous : https://allouir.uir.ac.ma/",
+        "Les frais sont de 65 000 DH par an, plus 10 000 DH de frais d'inscription non remboursables. Le programme propose deux parcours: Standard Track (33% français/67% anglais) et English Track (100% anglais).",
+      category: "Frais et financement",
     },
     {
       question:
-        "Qui contacter pour des questions générales sur les admissions à l’UIR ?",
-      answer: "Tél : +212 (0)5 30 10 40 63\nEmail : concours@uir.ac.ma",
-    },
-    {
-      question: "Où puis-je consulter les formations proposées par l’UIR ?",
+        "Comment fonctionne le prêt étudiant en partenariat avec la Banque Populaire?",
       answer:
-        "Le catalogue est disponible ici : https://www.uir.ac.ma/upload/media/67f9219a3b152115732768.pdf",
+        "La Banque Populaire propose des prêts bonifiés jusqu'à 50 000 DH/an selon le cycle d'études. L'UIR prend en charge les intérêts pendant la durée des études. Les conditions exactes sont disponibles sur le site web de l'UIR.",
+      category: "Frais et financement",
     },
     {
       question:
-        "Quand auront lieu les épreuves orales pour les filières comme Droit ou Économie ?",
+        "Quelles infrastructures sportives sont disponibles sur le campus?",
       answer:
-        "Les concours sont oraux et ont lieu les : 12 avril, 10 mai, 17 juin, 18 juillet, 3 septembre",
+        "Le campus dispose de: terrain de football synthétique, salles de fitness/musculation, terrain de padel, courts de tennis, terrains de basketball/volley-ball, tables de ping-pong, et une piscine semi-olympique couverte de 6 couloirs.",
+      category: "Vie étudiante",
+    },
+    {
+      question: "Comment fonctionne le système de navette pour les étudiants?",
+      answer:
+        "L'UIR propose plus de 10 trajets de navette couvrant la région Rabat-Salé-Témara. Les horaires et trajets exacts sont communiqués en début d'année universitaire.",
+      category: "Vie étudiante",
+    },
+    {
+      question: "Combien de partenariats internationaux l'UIR compte-t-elle?",
+      answer:
+        "L'UIR compte 262 partenariats académiques dans 57 pays, dont 45 partenaires Erasmus. Ces accords permettent des échanges étudiants et des doubles diplômes.",
+      category: "International",
     },
     {
       question:
-        "Combien dois-je prévoir pour les frais de scolarité si je choisis la filière Médecine ?",
+        "Quels débouchés professionnels offre la licence en Biotechnologie et Sciences de la Santé?",
       answer:
-        "Médecine : 120 000 Dhs/an. D’autres frais peuvent s’ajouter selon le programme. Des frais d’inscription s’appliquent aussi (généralement 10 000 ou 20 000 Dhs).",
+        "Les diplômés peuvent travailler dans: la recherche médicale, l'industrie pharmaceutique, les laboratoires d'analyse médicale, et d'autres secteurs liés à la santé et aux biotechnologies.",
+      category: "Carrières",
+    },
+    {
+      question: "Comment créer un compte candidat pour postuler à l'UIR?",
+      answer:
+        "1. Accédez à www.uir.ac.ma\n2. Cliquez sur 'Candidature'\n3. Sélectionnez 'Candidature bacheliers'\n4. Renseignez vos informations\n5. Rechargez votre compte candidat (750 DH pour 1-2 concours, 1500 DH pour concours illimités)",
+      category: "Admissions",
+    },
+    {
+      question: "Quels sont les avantages du campus certifié HQE?",
+      answer:
+        "Le campus HQE (Haute Qualité Environnementale) offre: gestion durable des ressources, espaces verts, centrale photovoltaïque produisant 470 MWh/an, et infrastructures éco-conçues. C'est le premier campus africain à obtenir cette certification.",
+      category: "Campus",
     },
     {
       question:
-        "Quels documents les étudiants étrangers doivent-ils préparer pour s’inscrire ?",
+        "La Faculté Internationale de Médecine propose-t-elle des stages internationaux?",
       answer:
-        "Créer un compte candidat, fournir les pièces demandées (dont équivalence), prendre rendez-vous pour finaliser l’inscription. Documents spécifiques disponibles selon diplôme (bac, post-bac).",
+        "Oui, à partir de la 6ème année, les étudiants en médecine peuvent effectuer des mobilités dans les universités partenaires de l'UIR. Les stages hospitaliers peuvent aussi être réalisés à l'international.",
+      category: "Programmes académiques",
     },
     {
       question:
-        "Je suis dans une situation financière difficile, l’UIR peut-elle m’aider ?",
+        "Quels modules sont enseignés en première année de licence en Droit des Affaires?",
       answer:
-        "Oui. Vous pouvez faire une demande de bourse sur https://bourse.uir.ac.ma avec votre email UIR. Remplissez le formulaire en ligne et joignez les pièces demandées.",
+        "Au S1: Introduction à l'étude du Droit, droit musulman, sociologie/philosophie du droit, science politique, économie/gestion, langues étrangères. Au S2: Théorie générale des obligations, droit commercial fondamental, droit pénal général.",
+      category: "Programmes académiques",
     },
     {
-      question: "Y a-t-il des frais pour passer les concours à l’UIR ?",
+      question: "Peut-on candidater en Psychologie avec un bac littéraire?",
       answer:
-        "Oui. 750 Dhs pour 2 concours, 1500 Dhs pour plusieurs concours. Ces frais ne sont pas remboursables.",
+        "Oui, tous les types de baccalauréat sont acceptés, mais un niveau minimum B1 en français est requis. La sélection se fait sur étude de dossier et entretien oral.",
+      category: "Admissions",
     },
     {
-      question: "Combien coûte un logement en résidence UIR par mois ?",
+      question: "La bourse sociale couvre-t-elle les frais de logement?",
       answer:
-        "Les tarifs varient selon l’étage et le type de chambre. Par exemple : Chambre simple au RDC : 2950 Dhs, Chambre simple + 4ème étage : 3675 Dhs.",
+        "La bourse sociale peut couvrir jusqu'à 75% des frais de scolarité. Dans certains cas, elle peut inclure une prise en charge partielle des frais de logement, sous conditions de ressources.",
+      category: "Frais et financement",
     },
     {
-      question: "Qui est responsable des logements étudiants à l’UIR ?",
+      question: "Comment rejoindre un club étudiant à l'UIR?",
       answer:
-        "M. Mustapha Iguilem — Email : mustapha.iguilem@uir.ac.ma — Tél : +212 (0)5 30 10 30 43",
-    },
-    {
-      question: "L’UIR propose-t-elle des prêts bancaires pour les étudiants ?",
-      answer:
-        "Oui, avec la Banque Populaire. Prêt bonifié jusqu’à 50 000 Dhs/an selon le cycle. UIR prend en charge les intérêts pendant les études.",
-    },
-    {
-      question: "À quelle date démarre la rentrée universitaire à l’UIR ?",
-      answer:
-        "Le calendrier de la rentrée universitaire 2025–2026 sera communiqué ultérieurement.",
-    },
-    // === SCIENCES DE LA SANTÉ (2026) ===
-    {
-      question:
-        "Quand a lieu le concours commun Médecine et Médecine Dentaire en 2026 ?",
-      answer:
-        "Aucune date spécifique n'est mentionnée pour le concours commun Médecine/Dentaire en 2026 dans le calendrier fourni.",
+        "Plus de 30 clubs et organisations sont disponibles (sport, art, entrepreneuriat...). Les inscriptions se font en début d'année via le Bureau des Étudiants (BDE). Des soirées de présentation sont organisées.",
+      category: "Vie étudiante",
     },
     {
       question:
-        "Quand sont les épreuves pour la Licence en Biotechnologie en 2026 ?",
+        "Quelles entreprises recrutent les diplômés de Rabat Business School?",
       answer:
-        "Les épreuves (écrit+oral) ont lieu les :<br>- 07 mai<br>- 24 juin<br>- 24 juillet<br>- 30 août.",
+        "RBS, accréditée AACSB, a un réseau de 170+ entreprises partenaires dont Deloitte, BMCE, OCP, Renault, etc. 93% des diplômés trouvent un emploi dans les 6 mois après l'obtention de leur diplôme.",
+      category: "Carrières",
     },
     {
-      question: "Quand est le concours de Génie Biomédical en 2026 ?",
+      question: "Comment postuler pour un semestre d'échange international?",
       answer:
-        "Les dates sont :<br>- 14 mai<br>- 23 juin<br>- 14 juillet<br>- 17 juillet<br>- 27 août (tous en écrit+oral).",
-    },
-    // === SCIENCES DE LA SANTÉ ===
-    {
-      question:
-        "Quand a lieu le concours commun Médecine et Médecine Dentaire ?",
-      answer:
-        "Le concours commun Médecine et Médecine Dentaire a lieu le 14 juillet.",
+        "1. Avoir validé au moins 2 semestres\n2. Postuler via le Bureau des Relations Internationales\n3. Fournir CV, relevés de notes et lettre de motivation\n4. Les places sont attribuées sur mérite académique",
+      category: "International",
     },
     {
-      question: "Quand sont les épreuves pour la Licence en Biotechnologie ?",
+      question: "La cellule d'écoute psychologique est-elle gratuite?",
       answer:
-        "Les épreuves (écrit+oral) ont lieu les :<br>- 07 mai<br>- 24 juin<br>- 24 juillet<br>- 30 août.",
-    },
-    {
-      question: "Quand est le concours de Génie Biomédical ?",
-      answer:
-        "Les dates sont :<br>- 14 mai<br>- 23 juin<br>- 14 juillet<br>- 17 juillet<br>- 27 août (tous en écrit+oral).",
-    },
-
-    // === SCIENCES PARAMÉDICALES ===
-    {
-      question: "Quand ont lieu les concours pour Infirmier Polyvalent ?",
-      answer:
-        "Les dates sont :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre (tous en écrit+oral).",
+        "Oui, des psychologues sont disponibles gratuitement pour les étudiants via le service anti-stress de l'UIR, accessible 24h/24 sur rendez-vous.",
+      category: "Vie étudiante",
     },
     {
       question:
-        "Quand est le concours pour Infirmier en Anesthésie et Réanimation ?",
+        "Quels sont les programmes en co-diplomation avec l'IHECS Belgique?",
       answer:
-        "Les dates sont :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre (tous en écrit+oral).",
-    },
-    {
-      question: "Quand est l'oral pour Technicien d'Imagerie Médicale ?",
-      answer:
-        "Les oraux (avec étude de dossier) ont lieu aux mêmes dates que les écrits :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre.",
+        "La licence Communication & Médias (3 ans) + Master (2 ans) en Publicité, Relations Publiques ou Journalisme. Les étudiants effectuent un semestre en Belgique avec obtention d'un double diplôme.",
+      category: "International",
     },
     {
       question:
-        "Quand sont les épreuves pour la Licence en Nutrition et Diététique ?",
+        "J'ai un bac littéraire, qu'est-ce que tu me conseilles comme filière ?",
       answer:
-        "Les épreuves (étude de dossier + oral) ont lieu les :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre.",
-    },
-    {
-      question: "Quand est le concours pour Technicien de Laboratoire ?",
-      answer:
-        "Les épreuves (étude de dossier + oral) ont lieu les :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre.",
-    },
-    // === GÉNIE CIVIL ===
-    {
-      question: "Quand ont lieu les concours de Génie Civil ?",
-      answer:
-        "Les épreuves (écrit+oral) ont lieu les :<br>- 03 mai<br>- 22 juin<br>- 16 juillet<br>- 29 août.",
-    },
-
-    // === INGÉNIERIE AÉROSPATIALE ET AUTOMOBILE ===
-    {
-      question:
-        "Quand sont les concours d'Ingénierie Aérospatiale et Automobile ?",
-      answer:
-        "Les épreuves (écrit+oral) ont lieu les :<br>- 03 mai<br>- 22 juin<br>- 16 juillet<br>- 29 août.",
-    },
-
-    // === INGÉNIERIE INFORMATIQUE ===
-    {
-      question: "Quand est le concours d'Ingénierie Informatique ?",
-      answer:
-        "Les épreuves (écrit+oral) ont lieu les :<br>- 03 mai<br>- 22 juin<br>- 16 juillet<br>- 29 août.",
-    },
-
-    // === INGÉNIERIE DE L'ÉNERGIE ===
-    {
-      question: "Quand ont lieu les concours d'Ingénierie de l'Énergie ?",
-      answer:
-        "Les épreuves (écrit+oral) ont lieu les :<br>- 03 mai<br>- 22 juin<br>- 16 juillet<br>- 29 août.",
-    },
-
-    // === ARCHITECTURE ===
-    {
-      question: "Quand sont les épreuves d'Architecture ?",
-      answer:
-        "Les épreuves (écrit+oral) ont lieu les :<br>- 03 mai<br>- 04 mai<br>- 21 juin<br>- 22 juin<br>- 15 juillet<br>- 16 juillet<br>- 28 août<br>- 29 août.",
-    },
-
-    // QUESTIONS SPÉCIFIQUES PAR DATE
-    {
-      question: "Quels concours ont lieu le 03 mai ?",
-      answer:
-        "Le 03 mai ont lieu les concours (écrit+oral) de :<br>- Génie Civil<br>- Ingénierie Aérospatiale et Automobile<br>- Ingénierie Informatique<br>- Ingénierie de l'Énergie<br>- Architecture",
-    },
-    {
-      question: "Quels concours ont lieu le 04 mai ?",
-      answer:
-        "Le 04 mai a lieu uniquement le concours d'Architecture (écrit+oral).",
-    },
-    {
-      question: "Quand sont les épreuves écrites pour l'IPM à RBS ?",
-      answer:
-        "Les écrits pour l'IPM ont lieu :<br>- 18 juin (écrit)<br>- 4 juillet (écrit)",
-    },
-    {
-      question: "Quand sont les oraux pour l'IPM à RBS ?",
-      answer:
-        "Les oraux pour l'IPM ont lieu :<br>- 25 juin (oral)<br>- 11 juillet (oral)",
-    },
-
-    // === PGE1 ===
-    {
-      question: "Quand a lieu le concours écrit du PGE1 ?",
-      answer: "L'écrit du PGE1 a lieu le 18 juin.",
-    },
-    {
-      question: "Quand est l'oral du PGE1 ?",
-      answer: "L'oral du PGE1 a lieu le 25 juin.",
-    },
-
-    // === ITB ===
-    {
-      question: "Quand est l'examen écrit pour l'ITB ?",
-      answer: "L'écrit pour l'ITB a lieu le 12 avril.",
-    },
-    {
-      question: "Quand est l'entretien oral pour l'ITB ?",
-      answer: "L'oral pour l'ITB a lieu le 19 avril.",
-    },
-
-    // === MASTERS RBS/PGE2 ===
-    {
-      question: "Quand ont lieu les épreuves pour les masters RBS ?",
-      answer: "Les masters RBS/PGE2 ont leurs épreuves (écrit+oral) le 17 mai.",
-    },
-
-    // === QUESTIONS PAR DATE ===
-    {
-      question: "Quels concours ont lieu le 18 juin ?",
-      answer: "Le 18 juin ont lieu :<br>- Écrit IPM<br>- Écrit PGE1",
-    },
-    {
-      question: "Quels programmes passent des épreuves en avril ?",
-      answer: "En avril :<br>- ITB : écrit le 12, oral le 19",
-    },
-    {
-      question: "Quels concours ont lieu en juillet ?",
-      answer: "En juillet :<br>- IPM : écrit le 4, oral le 11",
-    },
-    {
-      question: "Quand sont les oraux de Sciences Po ?",
-      answer:
-        "Les oraux de Sciences Po ont lieu aux dates suivantes :<br>- 12 avril<br>- 10 mai<br>- 17 juin<br>- 18 juillet<br>- 03 septembre",
-    },
-
-    // === PSYCHOLOGIE ===
-    {
-      question: "Quand ont lieu les concours de Psychologie ?",
-      answer:
-        "Les oraux de Psychologie se déroulent aux dates suivantes :<br>- 12 avril<br>- 10 mai<br>- 17 juin<br>- 18 juillet<br>- 03 septembre",
-    },
-
-    // === DROIT ===
-    {
-      question: "Quelles sont les dates des oraux de Droit ?",
-      answer:
-        "Les épreuves orales de Droit ont lieu :<br>- 12 avril<br>- 10 mai<br>- 17 juin<br>- 18 juillet<br>- 03 septembre",
-    },
-
-    // === ECONOMIE ===
-    {
-      question: "Quand se passent les oraux d'Économie ?",
-      answer:
-        "Les oraux d'Économie sont prévus aux dates :<br>- 12 avril<br>- 10 mai<br>- 17 juin<br>- 18 juillet<br>- 03 septembre",
-    },
-
-    // === COMMUNICATION & MÉDIAS ===
-    {
-      question: "Quand sont les épreuves de Communication et Médias ?",
-      answer:
-        "Les oraux de Communication & Médias ont lieu :<br>- 12 avril<br>- 10 mai<br>- 17 juin<br>- 18 juillet<br>- 03 septembre",
-    },
-
-    // === QUESTIONS PAR DATE ===
-    {
-      question: "Quels concours ont lieu le 12 avril ?",
-      answer:
-        "Le 12 avril ont lieu les oraux de :<br>- Sciences Po<br>- Psychologie<br>- Droit<br>- Économie<br>- Communication & Médias",
-    },
-    {
-      question: "Quels examens se déroulent en mai ?",
-      answer: "En mai :<br>- Tous les oraux (toutes filières) le 10 mai",
-    },
-    {
-      question: "Y a-t-il des concours en septembre ?",
-      answer:
-        "Oui, le 03 septembre ont lieu les oraux pour toutes les filières :<br>- Sciences Po<br>- Psychologie<br>- Droit<br>- Économie<br>- Communication & Médias",
+        "Avec un bac littéraire, vous pouvez envisager plusieurs filières à l'UIR :\n1. **Droit** (Licence en Droit des Affaires)\n2. **Sciences Politiques** (avec parcours en Relations Internationales ou Cultures et Sociétés)\n3. **Communication & Médias** (en partenariat avec l'IHECS Belgique)\n4. **Psychologie** (avec possibilité de passerelles)\n5. **Économie** (accessible avec mise à niveau en mathématiques)\n\nCes programmes valorisent vos compétences en rédaction, analyse et langues.",
+      category: "Orientation",
+      keywords: ["littéraire", "conseil", "filière"],
     },
     {
       question:
-        "Quelles filières d'ingénierie me sont accessibles avec un Bac Scientifique à l'UIR ?",
+        "Je veux devenir ingénieur mais j'ai un bac SVT, quelles sont mes options ?",
       answer:
-        "Avec un Bac Scientifique, vous pouvez accéder à toutes les filières d'ingénierie : Génie Civil, Ingénierie de l'Énergie, Informatique, Aérospatial/Automobile, et Génie Biomédical.",
+        "Avec un bac SVT, vous pouvez accéder à plusieurs filières d'ingénieur à l'UIR :\n\n- **Génie Civil**\n- **Génie Biomédical** (parfait pour combiner biologie et ingénierie)\n- **Ingénierie de l'Énergie**\n- **Informatique** (avec remise à niveau en mathématiques au CPI)\n\nLe cycle préparatoire intégré (2 ans) vous permet de consolider vos bases scientifiques avant le cycle ingénieur.",
+      category: "Orientation",
+      keywords: ["SVT", "ingénieur", "options"],
     },
     {
       question:
-        "Mon Bac S option SVT me permet-il d'intégrer la filière Génie Civil ?",
+        "Quelle filière choisir pour travailler dans l'intelligence artificielle ?",
       answer:
-        "Oui, le Bac S option SVT est accepté pour le Génie Civil. Vous devrez passer les épreuves écrites en mathématiques/physique et un entretien oral.",
+        "Pour l'IA, privilégiez :\n\n1. **ESIN** : Spécialisation 'Big Data & Intelligence Artificielle' en cycle ingénieur\n2. **Génie Biomédical** : Modules d'IA appliquée à la santé\n3. **Licence en Biotechnologie** + Master en Bio-informatique\n\nConseil : Renforcez vos compétences en mathématiques et programmation Python dès la première année.",
+      category: "Orientation",
+      keywords: ["IA", "intelligence artificielle", "conseil"],
     },
     {
       question:
-        "Puis-je faire médecine avec un Bac S option Mathématiques à l'UIR ?",
+        "Je suis passionné par le sport, y a-t-il des parcours adaptés ?",
       answer:
-        "Oui, la Faculté Internationale de Médecine accepte les Bac S option Mathématiques A/B. La sélection se fait sur note du Bac + épreuves écrites (SVT, Physique, Chimie, Mathématiques).",
+        "Plusieurs options s'offrent à vous :\n\n- **Bourse Sportive** : Pour les athlètes de haut niveau (avec aménagements horaires)\n- **Licence STAPS** en partenariat avec des universités européennes\n- **Management du Sport** via Rabat Business School (électifs disponibles)\n\nL'UIR dispose d'infrastructures sportives de haut niveau (piscine olympique, terrains, salles de fitness).",
+      category: "Orientation",
+      keywords: ["sport", "passion", "parcours"],
     },
     {
       question:
-        "Y a-t-il des prépas intégrées pour les filières scientifiques ?",
+        "Quelle école choisir pour avoir un double diplôme international ?",
       answer:
-        "Oui, toutes les filières d'ingénierie ont un cycle préparatoire intégré de 2 ans avant le cycle ingénieur de 3 ans.",
+        "Les meilleures options pour un double diplôme :\n\n1. **Rabat Business School** : Triple Bachelor avec IÉSEG (France) et HEC Montréal\n2. **SAAE** (Aérospatial/Automobile) : Master à Georgia Tech ou Mississippi State University\n3. **Communication** : Co-diplomation avec l'IHECS Belgique\n4. **Architecture** : Partenariats avec les ENSA françaises\n\nConseil : Préparez votre TOEFL/IELTS dès la première année.",
+      category: "Orientation",
+      keywords: ["double diplôme", "international", "conseil"],
     },
     {
       question:
-        "Quelle spécialité d'ingénierie conseillez-vous pour un Bac S avec forte dominante physique ?",
+        "Je veux faire médecine mais j'ai peur de ne pas être pris, quelles alternatives ?",
       answer:
-        "L'Ingénierie Aérospatiale/Automobile ou l'Ingénierie de l'Énergie seraient particulièrement adaptées, avec leurs modules avancés en mécanique des fluides et thermodynamique.",
+        "Considérez ces parcours complémentaires :\n\n- **Licence en Biotechnologie et Sciences de la Santé** (avec passerelle possible)\n- **Génie Biomédical** (ingénierie médicale)\n- **Sciences Paramédicales** :\n  • Infirmier Polyvalent\n  • Technicien de Laboratoire\n  • Imagerie Médicale\n\nCes filières offrent des débouchés dans le secteur médical avec des concours moins sélectifs.",
+      category: "Orientation",
+      keywords: ["médecine", "alternatives", "conseil"],
+    },
+    {
+      question: "Quelle filière offre le plus de débouchés au Maroc ?",
+      answer:
+        "Top 5 des filières à fort débouché :\n\n1. **Informatique** (Cloud Computing/Cybersécurité)\n2. **Ingénierie de l'Énergie** (secteur renouvelable en croissance)\n3. **International Program in Management** (RBS)\n4. **Techniques Médicales** (Infirmiers, Radiologie)\n5. **Génie Civil** (grands projets infrastructurels)\n\nConseil : Croisez vos centres d'intérêt avec les besoins du marché (rapports CNC/ONMT disponibles à la bibliothèque).",
+      category: "Orientation",
+      keywords: ["débouchés", "emploi", "conseil"],
     },
     {
       question:
-        "Puis-je intégrer directement la 2ème année si j'ai fait une prépa scientifique ailleurs ?",
+        "Je suis indécis entre droit et sciences politiques, que me conseilles-tu ?",
       answer:
-        "Oui, des concours d'accès en 2ème année sont possibles pour les filières d'ingénierie sous réserve d'équivalence de votre parcours.",
+        "Critères de choix :\n\n**Choisissez Droit si vous :**\n- Aimez les textes juridiques\n- Ciblez les carrières d'avocat/notaire/juriste d'entreprise\n- Préférez un cadre structuré\n\n**Optez pour Sciences Politiques si vous :**\n- Vous intéressez aux relations internationales\n- Ciblez les ONG/administrations/diplomatie\n- Aimez la pluridisciplinarité (économie, histoire, sociologie)\n\nTest : Suivez des cours d'auditeur libre dans les deux filières lors des journées portes ouvertes.",
+      category: "Orientation",
+      keywords: ["droit", "sciences po", "conseil"],
     },
     {
-      question:
-        "Les cours en Informatique sont-ils en français ou en anglais ?",
+      question: "Comment choisir entre médecine et médecine dentaire ?",
       answer:
-        "Le cycle préparatoire est en français, mais les cours du cycle ingénieur (à partir de la 3ème année) sont dispensés en anglais.",
+        "Points de comparaison :\n\n**Médecine :**\n- 6 ans + spécialisation\n- Large champ d'action\n- Plus de stages hospitaliers\n\n**Médecine Dentaire :**\n- 6 ans (spécialisation optionnelle)\n- Pratique plus technique/manuelle\n- Horaires souvent plus flexibles\n\nTestez-vous : Le centre de simulation médicale de l'UIR propose des ateliers découverte pour les indécis.",
+      category: "Orientation",
+      keywords: ["médecine", "dentaire", "choix"],
     },
     {
-      question:
-        "Quelle est la différence entre l'ESIN et le Génie Biomédical pour un Bac S ?",
+      question: "Je veux travailler à l'étranger, quelle filière privilégier ?",
       answer:
-        "L'ESIN forme aux métiers du numérique (cloud, cybersécurité...), tandis que le Génie Biomédical combine ingénierie et sciences médicales (dispositifs médicaux, imagerie...).",
-    },
-    {
-      question:
-        "Avec mon Bac S, puis-je aussi postuler en Sciences Politiques ou Droit ?",
-      answer:
-        "Oui, ces filières sont accessibles avec tout type de Bac. Votre profil scientifique sera un atout pour les aspects analytiques.",
-    },
-    {
-      question:
-        "Y a-t-il des laboratoires pratiques pour les étudiants en ingénierie ?",
-      answer:
-        "Oui, l'UIR dispose de laboratoires équipés pour chaque spécialité (salles BIM pour le Génie Civil, simulateurs pour l'Aérospatial, plateformes cloud pour l'Informatique...).",
-    },
-    {
-      question:
-        "Quel pourcentage d'étudiants en ingénierie viennent de Bac S ?",
-      answer:
-        "Environ 85% des admis en cycle ingénieur sont titulaires d'un Baccalauréat Scientifique, toutes options confondues.",
-    },
-    {
-      question:
-        "Puis-je faire un double cursus Médecine/Ingénierie Biomédicale ?",
-      answer:
-        "Non, ces formations sont distinctes, mais des passerelles existent après la licence. Le Génie Biomédical offre cependant des modules communs avec la faculté de médecine.",
-    },
-    {
-      question: "Quels stages sont prévus durant le cycle ingénieur ?",
-      answer:
-        "4 stages obligatoires : stage ouvrier (4 semaines), stage technicien (4 semaines), stage recherche (3 mois) et PFE (5 mois). Certains peuvent être effectués à l'international.",
-    },
-    {
-      question:
-        "Mon Bac S me donne-t-il un avantage pour les concours d'entrée ?",
-      answer:
-        "Oui, les épreuves écrites portant sur les maths/physique, les bacheliers scientifiques sont souvent mieux préparés. Mais l'entretien oral évalue aussi votre motivation.",
+        "Filières les plus internationalisées :\n\n1. **IPM** (Rabat Business School) : 100% en anglais\n2. **Ingénierie Aérospatiale** (double diplôme USA)\n3. **Communication** (mobilité obligatoire en Belgique)\n4. **Sciences Politiques** (52 universités partenaires)\n\nConseil : Privilégiez les programmes avec mobilité intégrée et renforcez vos langues (anglais + espagnol/allemand).",
+      category: "Orientation",
+      keywords: ["étranger", "international", "conseil"],
     },
   ];
-
   await vectorStore.addModels(
     await db.$transaction(
       faqs.map((content) =>

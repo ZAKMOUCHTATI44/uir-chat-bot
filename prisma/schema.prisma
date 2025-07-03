@@ -9,8 +9,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
   // directUrl = env("DIRECT_URL")
 }
 
@@ -22,12 +22,14 @@ model faq {
 }
 
 model Document {
-  id       String                 @id @default(cuid())
-  question String
-  answer   String
-  vector   Unsupported("vector")?
+  id        String                 @id @default(cuid())
+  question  String
+  answer    String
+  vector    Unsupported("vector")?
+  metadata  Json? // Add metadata field for additional context
+  createdAt DateTime               @default(now()) // Track when document was added
+  updatedAt DateTime               @updatedAt // Track last update
 }
-
 
 model Lead {
   id          Int      @id @default(autoincrement())
@@ -38,7 +40,6 @@ model Lead {
 
   @@map("leads")
 }
-
 
 model Message {
   id        Int      @id @default(autoincrement())

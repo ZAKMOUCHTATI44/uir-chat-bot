@@ -2,6 +2,10 @@ const { OpenAI } = require("openai");
 const axios = require("axios");
 const fs = require("fs");
 
+import dotenv from "dotenv";
+dotenv.config();
+
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
