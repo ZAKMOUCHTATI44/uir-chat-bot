@@ -67,7 +67,7 @@ async function buildContext(from: string, currentMessage: string) {
         {
           role: "system",
           content:
-            "You are a helpful assistant that summarizes the conversation context and reformulates a clean, simple, and structured question based on recent user inputs.",
+            " Vous êtes un assistant utile qui résume le contexte de la conversation et reformule une question claire, simple et structurée à partir des dernières entrées de l'utilisateur.",
         },
         {
           role: "user",
@@ -108,9 +108,9 @@ app.post("/uir-chat-bot", async (req: Request, res: Response) => {
 
     const context = await buildContext(message.From, message.Body);
 
-    console.log("********************")
+    console.log("********************");
     console.log(context);
-    console.log("********************")
+    console.log("********************");
     const [response] = await Promise.all([
       findResponse(context),
       messageService.saveMessage(message.Body, message.From, "text"),
