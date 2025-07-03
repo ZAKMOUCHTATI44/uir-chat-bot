@@ -71,7 +71,7 @@ async function buildContext(from: string, currentMessage: string) {
         },
         {
           role: "user",
-          content: `${JSON.stringify(recentMessages)}`,
+          content: `${JSON.stringify([recentMessages?.map(item => item.body) , currentMessage].join(","))}`,
         },
       ],
       temperature: 0.3,
