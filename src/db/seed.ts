@@ -505,82 +505,472 @@ export const run = async () => {
     },
     {
       question:
-        "Quand a lieu le concours commun Médecine et Médecine Dentaire en 2026 ?",
+        "Salut ! Quelles licences (Bachelor) vous proposez après le bac ?",
       answer:
-        "Aucune date spécifique n'est mentionnée pour le concours commun Médecine/Dentaire en 2026 dans le calendrier fourni.",
+        "L’UIR offre une gamme complète de parcours post-bac :\n\n- Collège des Sciences Sociales : Sciences Politiques (Science Po Rabat), Psychologie, Licence en Droit, Licence Économie, Communication & Médias\n- Collège Ingénierie & Architecture : Génie Civil, Génie Biomédical, Informatique & Numérique (ESIN), Génie de l'Énergie (ECINE), Aéronautique & Automotive (SAAE), Architecture (ESAR)\n- Collège des Sciences de la Santé : Biotechnologie & Sciences de la Santé, Diététique & Nutrition, Licence Technicien en Imagerie Médicale, Licence Technicien de Laboratoire, Infirmier Polyvalent, Infirmier en Anesthésie-Réanimation, Médecine (6 ans), Médecine Dentaire (6 ans)\n- Rabat Business School : International Program in Management (IPM) (Standard ou English Track) et International Triple Bachelor",
     },
     {
-      question:
-        "Quand sont les épreuves pour la Licence en Biotechnologie en 2026 ?",
+      question: "Comment se passe la prépa intégrée IPM à l'UIR ?",
       answer:
-        "Les épreuves (écrit+oral) ont lieu les :<br>- 07 mai<br>- 24 juin<br>- 24 juillet<br>- 30 août.",
+        "Le Bachelor IPM dure 3 ans :\n\n1ʳᵉ année (30–100% anglais) : Principles of Economics, Calculus for Business, Statistics, Geopolitics, Marketing, Accounting, Management, langues (TOEIC, espagnol)\n2ᵉ année : Functional Internship (8 semaines), cours avancés (Data Analytics, SAP, etc.)\n3ᵉ année : Junior Specialist Internship (12 semaines) + Bachelor Dissertation\n\nAdmissions : écrit (raisonnement logique & numérique, culture générale) + entretien de motivation\nFrais : 65 000 Dhs/an + 10 000 Dhs d'inscription",
     },
     {
-      question: "Quand est le concours de Génie Biomédical en 2026 ?",
+      question: "Quels programmes post-bac propose la Rabat Business School ?",
       answer:
-        "Les dates sont :<br>- 14 mai<br>- 23 juin<br>- 14 juillet<br>- 17 juillet<br>- 27 août (tous en écrit+oral).",
-    },
-    // === SCIENCES DE LA SANTÉ ===
-    {
-      question:
-        "Quand a lieu le concours commun Médecine et Médecine Dentaire ?",
-      answer:
-        "Aucune date spécifique n'est mentionnée pour le concours commun Médecine/Dentaire dans le calendrier fourni.",
+        "International Program in Management (IPM) et International Triple Bachelor",
     },
     {
-      question: "Quand sont les épreuves pour la Licence en Biotechnologie ?",
+      question: "Qu'est-ce que l'International Program in Management (IPM) ?",
       answer:
-        "Les épreuves (écrit+oral) ont lieu les :<br>- 07 mai<br>- 24 juin<br>- 24 juillet<br>- 30 août.",
+        "Bachelor de 3 ans en Standard Track (33% français/67% anglais) ou English Track (100% anglais) avec épreuve écrite (raisonnement logique & numérique, ouverture culturelle) et entretien oral. Frais : 65 000 Dhs/an + 10 000 Dhs d'inscription",
     },
     {
-      question: "Quand est le concours de Génie Biomédical ?",
+      question: "Quels parcours existe-t-il dans l'IPM ?",
       answer:
-        "Les dates sont :<br>- 14 mai<br>- 23 juin<br>- 14 juillet<br>- 17 juillet<br>- 27 août (tous en écrit+oral).",
-    },
-
-    // === SCIENCES PARAMÉDICALES ===
-    {
-      question: "Quand ont lieu les concours pour Infirmier Polyvalent ?",
-      answer:
-        "Les dates sont :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre (tous en écrit+oral).",
+        "Standard Track (33% français/67% anglais) et English Track (100% anglais)",
     },
     {
-      question: "Quand est l'oral pour Technicien d’Imagerie Médicale ?",
-      answer:
-        "Les oraux (avec étude de dossier) ont lieu aux mêmes dates que les écrits :<br>- 06 mai<br>- 25 juin<br>- 23 juillet<br>- 13 septembre.",
-    },
-
-    // === RABAT BUSINESS SCHOOL ===
-    {
-      question: "Quand est l’écrit pour l’ITB à RBS ?",
-      answer:
-        "L’écrit pour l’ITB a lieu le **12 avril**, et l’oral le **19 avril**.",
+      question: "Combien dure le programme IPM ?",
+      answer: "3 ans",
     },
     {
-      question: "Quand sont les épreuves pour les masters RBS ?",
+      question: "Quels modules sont enseignés en 1ʳᵉ année de l'IPM ?",
       answer:
-        "Les masters RBS/PGE2 ont des épreuves (écrit+oral) le **17 mai**.",
-    },
-
-    // === SCIENCES PO/DROIT/ÉCONOMIE ===
-    {
-      question: "Quand sont les oraux de Psychologie ?",
-      answer:
-        "Tous les oraux ont lieu aux mêmes dates :<br>- 12 avril<br>- 10 mai<br>- 17 juin<br>- 18 juillet<br>- 03 septembre.",
-    },
-
-    // === INGÉNIERIE/ARCHITECTURE ===
-    {
-      question: "Quand a lieu le concours d’Architecture ?",
-      answer:
-        "Les dates sont :<br>- 04 mai<br>- 21 juin<br>- 15 juillet<br>- 28 août (tous en écrit+oral).",
+        "Principles of Economics, Computer Tools for Managers, Calculus for Business, Statistics, Geopolitics, Principles of Marketing, Principles of Accounting, Principles of Management, Principles of Human Resources Management, Civic Engagement & Reciprocity Project, Practical Academic Skills, préparation au TOEIC, espagnol",
     },
     {
-      question: "Quand est l’épreuve d’Ingénierie Aérospatiale ?",
+      question: "Quels stages propose l'IPM ?",
       answer:
-        "Les épreuves (écrit+oral) sont :<br>- 03 mai<br>- 22 juin<br>- 16 juillet<br>- 29 août.",
+        "Immersion internship (6 semaines), operational internship (8 semaines), Junior Specialist internship (12 semaines) + Bachelor dissertation",
+    },
+    {
+      question: "Quelles spécialisations majeures offre l'IPM en 3ᵉ année ?",
+      answer:
+        "Finance & Trading, Accounting & Audit, Marketing & Branding, Advertising & Marketing Communication, Human Resource Management, Supply Chain Management, Entrepreneurship & Innovation",
+    },
+    {
+      question: "Quelles mineures propose l'IPM ?",
+      answer: "Finance, Supply Chain Management, Marketing",
+    },
+    {
+      question: "Qui peut postuler à l'IPM ?",
+      answer: "Tous types de baccalauréat",
+    },
+    {
+      question: "Quelles épreuves pour intégrer l'IPM ?",
+      answer:
+        "Épreuve écrite (raisonnement logique & numérique, ouverture culturelle) + entretien oral de motivation",
+    },
+    {
+      question: "Quels sont les frais pour l'IPM ?",
+      answer: "65 000 Dhs/an + 10 000 Dhs inscription",
+    },
+    {
+      question: "Qu'est-ce que l'International Triple Bachelor ?",
+      answer:
+        "Programme de 4 ans en partenariat avec RBS (2 ans), IÉSEG (1 an) et HEC Montréal (1 an)",
+    },
+    {
+      question: "Quelles conditions pour le Triple Bachelor ?",
+      answer:
+        "Mention 'très bien' au bac, examen écrit (logique, numérique, ouverture culturelle, mathématiques) + entretien oral",
+    },
+    {
+      question: "Quels frais pour le Triple Bachelor ?",
+      answer:
+        "RBS : 120 000 Dhs/an – IÉSEG : 11 000 € – HEC Montréal : selon nationalité",
+    },
+    {
+      question: "Quelle est la durée du Triple Bachelor ?",
+      answer: "4 ans (2 ans RBS, 1 an IÉSEG, 1 an HEC Montréal)",
+    },
+    {
+      question: "Quels parcours propose le Collège des Sciences Sociales ?",
+      answer:
+        "Sciences Po Rabat, Sciences Politiques, Psychologie, Droit, Économie, Communication & Médias",
+    },
+    {
+      question: "Quels parcours en licence Sciences Politiques ?",
+      answer:
+        "Relations Internationales, Économie & Développement, Cultures & Sociétés (Monde arabe & africain)",
+    },
+    {
+      question: "Programme de la 1ʳᵉ année Sciences Politiques ?",
+      answer:
+        "Fondamentaux en relations internationales, sociologie, science politique, droit, économie, géopolitique, anthropologie + langues de l'ONU, service civique & projet professionnel",
+    },
+    {
+      question: "Programme de la 2ᵉ année Sciences Politiques ?",
+      answer:
+        "Spécialisation & enseignements fondamentaux selon l'option choisie",
+    },
+    {
+      question: "Programme de la 3ᵉ année Sciences Politiques ?",
+      answer:
+        "Finalisation du 1er cycle, mémoire de recherche, projet professionnel, orientation Master",
+    },
+    {
+      question: "Y a-t-il de la mobilité en Sciences Politiques ?",
+      answer: "Oui, un semestre à l'international parmi 52 partenaires",
+    },
+    {
+      question: "Qui peut postuler en Sciences Politiques ?",
+      answer: "Tous bacs & équivalents",
+    },
+    {
+      question: "Modalités d'accès Sciences Politiques ?",
+      answer:
+        "Dossier (bulletins, lettre de motivation, projet d'études) + entretien oral individuel",
+    },
+    {
+      question: "Frais licence Sciences Politiques ?",
+      answer: "62 000 Dhs/an + 10 000 Dhs inscription",
+    },
+    {
+      question: "Programmes du Collège Ingénierie & Architecture ?",
+      answer:
+        "Génie Civil, Génie Biomédical, Informatique & Numérique, Énergies, Aéronautique & Automotive, Architecture",
+    },
+    {
+      question: "Structure du cursus Génie Civil ?",
+      answer: "2 ans de cycle préparatoire intégré + 3 ans de cycle ingénieur",
+    },
+    {
+      question: "Bacs éligibles Génie Civil ?",
+      answer:
+        "Math A & B, Physiques, SVT, Sciences & Tech. Mécanique, Électrique",
+    },
+    {
+      question: "Épreuves Génie Civil ?",
+      answer: "Écrit : Mathématiques & Physique + oral individuel",
+    },
+    {
+      question: "Frais Génie Civil ?",
+      answer: "66 000 Dhs/an + 10 000 Dhs inscription",
+    },
+    {
+      question: "Modules CPI Génie Civil ?",
+      answer:
+        "Maths, Physique, Chimie, Mécanique, Électricité, Thermodynamique & transfert de chaleur, Info, Électronique, Automatique, Français, Communication, Anglais, Éco.",
+    },
+    {
+      question: "Modules CI Génie Civil ?",
+      answer:
+        "Math. ingénieur, Résistance Matériaux, Mécanique Fluides, Architecture/Urbanisme, Topographie, Électricité de Bâtiment, Machines Électriques, Recherche Opérationnelle, Géotechnique, Matériaux, Qualité & Analyse Eaux, Procédés, Béton Armé, Hydrologie, Hydraulique Souterraine, Routes, Structures, Info, BIM, Assainissement/AEP, Génie Environnement, Gestion de Projet",
+    },
+    {
+      question: "Stages Génie Civil ?",
+      answer: "Ouvrier (4 sem.), technicien (4 sem.), projet de fin d'études",
+    },
+    {
+      question: "Diplôme Génie Civil ?",
+      answer: "Diplôme reconnu équivalent aux diplômes nationaux",
+    },
+    {
+      question: "Programmes du Collège des Sciences de la Santé ?",
+      answer:
+        "Médecine, Médecine Dentaire, Biotechnologie & Sciences de la Santé, Diététique & Nutrition, Imagerie Médicale, Laboratoire, Infirmier Polyvalent, Infirmier Anesthésie-Réa",
+    },
+    {
+      question: "Durée du cursus Médecine ?",
+      answer: "6 ans (12 semestres préclinique & clinique)",
+    },
+    {
+      question: "Missions de la Faculté de Médecine ?",
+      answer:
+        "Former selon standards int'l, proposer formation continue, développer recherche biomédicale, fournir expertise",
+    },
+    {
+      question: "Diplôme Médecine ?",
+      answer: "Docteur en Médecine, équivalent national",
+    },
+    {
+      question: "Bacs éligibles Santé ?",
+      answer: "Selon programme, dossier étudié individuellement",
+    },
+    {
+      question: "Bacs éligibles Génie Biomédical ?",
+      answer: "Sci Math A & B, SVT, Physiques, Sci & Tech Électr./Mécan.",
+    },
+    {
+      question: "Sélection Génie Biomédical ?",
+      answer:
+        "Dossier (notes maths/physique), écrit en sciences fonda, entretien oral",
+    },
+    {
+      question: "Frais Génie Biomédical ?",
+      answer: "72 000 Dhs/an + 10 000 Dhs inscription",
+    },
+    {
+      question: "Modules 1ʳᵉ année Génie Biomédical ?",
+      answer:
+        "Math 1, Fondements Informatique, Électricité, Mécanique du point, Bio cellulaire/moléculaire, Langues 1, Méthodo universitaire",
+    },
+    {
+      question: "Modules 2ᵉ année Génie Biomédical ?",
+      answer:
+        "Électromagnétisme, Math 2, Optique, Physiologie humaine, Biochimie, Langues 2, Culture digitale",
+    },
+    {
+      question: "Modules 3ᵉ année Génie Biomédical ?",
+      answer:
+        "Math 3, Mécanique du solide, Propriétés matériaux, Chimie, Microbiologie, Langues 3, Arts & culture",
+    },
+    {
+      question: "Modules 4ᵉ année Génie Biomédical ?",
+      answer:
+        "Analyse numérique, Probabilités & Stats, Traitement du signal, Algo C, Électronique analogique & numérique, Langues 4, Power Skills",
+    },
+    {
+      question: "Modules 5ᵉ année Génie Biomédical ?",
+      answer:
+        "Électronique numérique, Physiologie humaine, Imagerie médicale 1, Prothèses & biomécanique, T° biomédicales, Power Skills, Langues",
+    },
+    {
+      question: "Spécialisation Génie Biomédical en 5ᵉ année ?",
+      answer: "Projet de fin d'études en entreprise/labo",
+    },
+    {
+      question: "Programmes ECINE (Énergie) ?",
+      answer: "CPI 2 ans + CI 3 ans en Ingénierie de l'Énergie",
+    },
+    {
+      question: "Bacs éligibles Énergie ?",
+      answer:
+        "Sci Math A & B, PC & SVT, Sci & Tech, français/étranger équivalent",
+    },
+    {
+      question: "Épreuves ECINE ?",
+      answer: "Écrit : Math & Physique + oral motivation & personnalité",
+    },
+    {
+      question: "Frais Énergie ?",
+      answer: "66 000 Dhs/an + 10 000 Dhs inscription",
+    },
+    {
+      question: "Modules CPI Énergie ?",
+      answer:
+        "Maths, Physique, Chimie, Mécanique, Résistance Matériaux, Mécanique Fluides, Ingénierie Mécanique, Info, Électr., Automatique, Français, Comm., Anglais, Éco., stage ouvrier",
+    },
+    {
+      question: "Modules CI Énergie ?",
+      answer:
+        "Math ingénieur, Management & IA, Info, Modélisation, Électronique, Automatique, Mécanique solide & fluides, Hydraulique, Thermique, Télédétection, Marchés, Anglais, Éco., stage technicien, projet R&D, stage ingénieur (5 mois)",
+    },
+    {
+      question: "Options internationales Énergie ?",
+      answer:
+        "Double diplôme EEIGM & ENSEM Nancy, semestre 8 en France, stage fin d'études à l'international",
+    },
+    {
+      question: "Programmes ESAR (Architecture) ?",
+      answer:
+        "Diplôme d'architecte en partenariat ENSA Marne-la-Vallée & Nancy",
+    },
+    {
+      question: "Bacs éligibles Architecture ?",
+      answer:
+        "Éco., Math A & B, PC & SVT, Arts Appliqués, français/étranger équivalent",
+    },
+    {
+      question: "Épreuves Architecture ?",
+      answer: "Écrit : Math & Physique + oral motivation & personnalité",
+    },
+    {
+      question: "Frais Architecture ?",
+      answer: "85 000 Dhs/an + 10 000 Dhs inscription",
+    },
+    {
+      question: "Programmes ESIN (Informatique) ?",
+      answer:
+        "CPI + CI en Informatique (spécialités Cloud/IA/Sécurité/Big Data/Génie Logiciel)",
+    },
+    {
+      question: "Bacs éligibles ESIN ?",
+      answer: "Math A & B, PC & SVT, Sci & Tech, français/étranger équivalent",
+    },
+    {
+      question: "Modules CPI ESIN ?",
+      answer:
+        "Analyse, Structures fondamentales, Électricité, Fondements info, Algo & Prog, Langues, Méthodo, Algèbre, Électromagnétisme, Culture digitale",
+    },
+    {
+      question: "Spécialités CI ESIN ?",
+      answer:
+        "Big Data & IA, Génie Logiciel, Cybersécurité, Cloud Computing & Virtualization",
+    },
+    {
+      question: "Modules 2ᵉ année CI ESIN ?",
+      answer:
+        "Advanced Web Dev, Distributed Algorithms, Design Patterns, IoT, ML, NoSQL, Cloud, Data Security, SDN, Parallel Programming, Blockchain, etc.",
+    },
+    {
+      question: "Modules 3ᵉ année CI ESIN ?",
+      answer:
+        "Advanced Databases, Routing & Switching, OOP & UML, Advanced Algo, Maths ing., Foreign Languages, Data Analytics, Mobile & Web Dev, Network Admin, BI & Datawarehousing, Cybersecurity...",
+    },
+    {
+      question: "Modules 1ʳᵉ année CI ESIN ?",
+      answer:
+        "Algèbre, Analyse numérique, Électronique, BD, Réseaux, Langues, Art & Culture, Stats, Signaux, OS, Algo, Web, Dev perso & responsabilité pro",
+    },
+    {
+      question: "Quelles solutions de financement propose l'UIR ?",
+      answer: "Bourse sociale & prêt étudiant",
+    },
+    {
+      question: "Critères bourse sociale ?",
+      answer:
+        "Bac obtenu l'année de l'inscription + dossier prouvant incapacité financement par tuteurs",
+    },
+    {
+      question: "Part de boursiers ?",
+      answer: "Près de 30%",
+    },
+    {
+      question: "Montant max prêt étudiant ?",
+      answer: "Jusqu'à 50 000 Dhs/an",
+    },
+    {
+      question: "Différé prêt étudiant ?",
+      answer: "Jusqu'à 6 ans",
+    },
+    {
+      question: "Comment candidater post-bac ?",
+      answer:
+        "www.uir.ac.ma > Candidature > Candidature bacheliers: remplir, recharger compte, régler frais, télécharger convocation",
+    },
+    {
+      question: "Frais concours post-bac ?",
+      answer: "750 Dhs (1–2 sessions), 1 500 Dhs (illimité)",
+    },
+    {
+      question: "Modalités paiement concours ?",
+      answer: "Espèces à l'UIR ou virement (RIB dispo)",
+    },
+    {
+      question: "Où télécharger la convocation ?",
+      answer: "Espace candidat ou e-mail suite paiement",
+    },
+    {
+      question: "Combien de points de restauration ?",
+      answer: "6 dont 1 restaurant universitaire",
+    },
+    {
+      question: "Combien de laveries ?",
+      answer: "2 (UIR Laverie & Lavomatic)",
+    },
+    {
+      question: "Centres de reprographie ?",
+      answer: "1 centre",
+    },
+    {
+      question: "Centre de santé ?",
+      answer: "MedHelp, 24 h/24, 7 j/7",
+    },
+    {
+      question: "Cellule d'écoute ?",
+      answer: "Psychologues sur rendez-vous",
+    },
+    {
+      question: "Navettes campus ?",
+      answer: "> 10 lignes Rabat-Salé-Témara",
+    },
+    {
+      question: "Taille de la bibliothèque ?",
+      answer: "> 80 000 ouvrages",
+    },
+    {
+      question: "Nombre de résidences ?",
+      answer: "8",
+    },
+    {
+      question: "Tarif chambre single ?",
+      answer: "Dès 2 800 Dhs/mois",
+    },
+    {
+      question: "Tarif chambre double ?",
+      answer: "Dès 2 000 Dhs/mois",
+    },
+    {
+      question: "Semestre 1 licence Économie ?",
+      answer:
+        "Intro droit, Macroéco I, Analyse maths II (algèbre), Comptabilité générale, Fisc, Langues (anglais/espagnol), Culture digitale & HN",
+    },
+    {
+      question: "Semestre 2 licence Économie ?",
+      answer:
+        "Micro éco II, Macro éco II, Éco dével., Intro sciences pol., Droit des affaires, Langues, Art & culture arabe",
+    },
+    {
+      question: "Semestre 3 licence Économie ?",
+      answer:
+        "Droit des affaires, Sciences pol., Éco dével., Micro II, Macro II, Langues, Art & culture",
+    },
+    {
+      question: "Semestre 4 licence Économie?",
+      answer:
+        "Éco mon. & fin. I, Échant. & est., Éco pol., Comptabilité nationale, Problèmes éco., Langues, Leadership & engagement civique",
+    },
+    {
+      question: "Semestre 5 licence Économie ?",
+      answer:
+        "Finances publiques & droit fiscal, Histoire pensée éco, Éco solidaire/sociale, Méthodo res., Analyse données, Langues, CMS",
+    },
+    {
+      question: "Semestre 6 licence Économie ?",
+      answer:
+        "Intro économétrie, Éco internationale, Fiscalité, Mémoire, Langues, Leadership & comm.",
+    },
+    {
+      question: "Modalités d'accès licence Économie ?",
+      answer: "Tous bacs, dossiers (bulletins, lettre, projet), entretien oral",
+    },
+    {
+      question: "Frais licence Économie ?",
+      answer: "62 000 Dhs/an + 10 000 Dhs inscription",
+    },
+    {
+      question: "Parcours Communication & Médias ?",
+      answer:
+        "Licence 3 ans + Master 2 ans co-diplomation IHECS, cours théoriques + ateliers (photo, vidéo, son, graphisme, web)",
+    },
+    {
+      question: "Partenaire Communication & Médias ?",
+      answer: "IHECS (Belgique)",
+    },
+    {
+      question: "Modalités d'accès Communication & Médias ?",
+      answer:
+        "Tous bacs & équivalents, oral individuel, 62 000 Dhs/an + 10 000 Dhs inscription",
+    },
+    {
+      question: "Objectif Communication & Médias ?",
+      answer:
+        "Former des pros de la com' avec bagage théorique & pratique en réponse au marché",
+    },
+    {
+      question: "Spécialisations Masters Communication & Médias ?",
+      answer:
+        "Publicité, Relations Publiques, Journalisme (co-diplomation IHECS)",
+    },
+    {
+      question: "Axes majeurs Communication & Médias ?",
+      answer:
+        "Culture générale & fondamentaux sciences sociales; compétences disciplinaires; manipulation pratique des médias",
+    },
+    {
+      question: "Programmes Techniques d'Imagerie Médicale ?",
+      answer:
+        "Licence Techniques d'Imagerie Médicale (3 ans) couvrant santé publique, anatomie, physio, biologie, droit pro, Élec/Électromagnétisme, sémiologie, hygiène, sciences phys., stages, languages",
+    },
+    {
+      question: "Modalités d'accès Techniques d'Imagerie Médicale ?",
+      answer:
+        "Tous bacs, B1 français (psychologie), dossier (bulletins, lettre 2 p., projet 3 p.), oral devant jury, 62 000 Dhs/an + 10 000 Dhs inscription",
     },
   ];
+
   await vectorStore.addModels(
     await db.$transaction(
       faqs.map((content) =>
